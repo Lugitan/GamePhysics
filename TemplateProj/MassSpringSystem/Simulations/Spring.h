@@ -1,6 +1,6 @@
 #pragma once
 #include "Point.h";
-#include "Simulator.h"
+#include "Simulator.h";
 class Spring
 {
 public:
@@ -13,5 +13,6 @@ public:
 	float initialLength;
 	float currentLength();
 	void draw(DrawingUtilitiesClass * DUC);
+	Vec3 computeElasticForces();
 };
 

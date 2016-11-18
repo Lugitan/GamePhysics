@@ -25,3 +25,7 @@ void Spring::draw(DrawingUtilitiesClass * DUC){
 	DUC->endLine();
 }
 
+Vec3 Spring::computeElasticForces(){
+	return (-stiffness)*(currentLength() - initialLength)*(point1->position - point2->position) / currentLength();
+}
+

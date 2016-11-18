@@ -70,7 +70,18 @@ void MassSpringSystemSimulator::externalForcesCalculations(float timeElapsed){
 	}
 }
 void MassSpringSystemSimulator::simulateTimestep(float timeStep){
-
+	for (size_t i = 0; i < points.size(); i++)
+	{
+		points[i].resetForce();
+		points[i].addForce(Vec3(0, 0, 9.81)*points[i].mass);
+	}
+	for (size_t i = 0; i < springs.size(); i++)
+	{
+		Vec3 force = springs[i].computeElasticForces();
+		springs[i].point1->addForce(force);
+		springs[i].point1->addForce(-force);
+	}
+	//TODO: Calculate new Position and Velocity
 }
 void MassSpringSystemSimulator::onClick(int x, int y){}
 void MassSpringSystemSimulator::onMouse(int x, int y){}
@@ -87,7 +98,10 @@ void MassSpringSystemSimulator::setDampingFactor(float damping){
 	m_fDamping = damping;
 }
 int MassSpringSystemSimulator::addMassPoint(Vec3 position, Vec3 Velocity, bool isFixed){
-	points.push_back(Point(position, Vec3(0, 0, 0), Velocity, m_fMass,isFixed ? 1 : m_fDamping));//Potential source of err if assumptions how it works are wrong
+	Point p = Point(position, Vec3(0, 0, 0), Velocity, m_fMass, m_fDamping);//Potential source of err if assumptions how it works are wrong
+	p.isFixed = isFixed;
+	points.push_back(p);
+	
 	return -1;
 }
 void MassSpringSystemSimulator::addSpring(int masspoint1, int masspoint2, float initialLength){

@@ -1,8 +1,8 @@
 #ifndef MASSSPRINGSYSTEMSIMULATOR_h
 #define MASSSPRINGSYSTEMSIMULATOR_h
-#include "Simulator.h";
-#include "Point.h";
-#include "Spring.h";
+#include "Simulator.h"
+#include "Point.h"
+#include "Spring.h"
 
 // Do Not Change
 #define EULER 0
