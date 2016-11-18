@@ -4,6 +4,9 @@
 MassSpringSystemSimulator::MassSpringSystemSimulator()
 {
 	m_iTestCase = 0;
+	points.push_back(Point(Vec3(1, 0, 0), Vec3(0, 0, 0), Vec3(0, 0, 0)));
+	points.push_back(Point(Vec3(0, 1, 0), Vec3(0, 0, 0), Vec3(0, 0, 0)));
+	points.push_back(Point(Vec3(0, 0, 1), Vec3(0, 0, 0), Vec3(0, 0, 0)));
 }
 
 // Functions
@@ -21,11 +24,10 @@ void MassSpringSystemSimulator::reset(){
 }
 void MassSpringSystemSimulator::drawFrame(ID3D11DeviceContext* pd3dImmediateContext){
 	DUC->setUpLighting(Vec3(), 0.4*Vec3(1, 1, 1), 100, 0.6*Vec3(0.97, 0.86, 1));
-	DUC->beginLine();
-	DUC->drawLine(Vec3(-0.5, 0, 0), Vec3(1,0,0), Vec3(0.5, 0, 0), Vec3(0,0,1));
-	DUC->endLine();
-	DUC->drawSphere(Vec3(-0.5, 0, 0), Vec3(0.1, 0.1, 0.1));
-	DUC->drawSphere(Vec3(0.5, 0, 0), Vec3(0.1, 0.1, 0.1));
+	for (size_t i = 0; i < points.size(); i++)
+	{
+		points[i].draw(DUC, 0.01);
+	}
 }
 
 void MassSpringSystemSimulator::notifyCaseChanged(int testCase){}
