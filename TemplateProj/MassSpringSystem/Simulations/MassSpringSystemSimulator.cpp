@@ -1,26 +1,32 @@
 #include "MassSpringSystemSimulator.h";
 
+float stiffness = 40;
+float mass = 10;
+float initialLength = 1;
+int damping = 0;
+
+
 //Construtors
 MassSpringSystemSimulator::MassSpringSystemSimulator()
 {
 	m_iTestCase = 0;
-	Point p1 = Point(Vec3(0, 0, 0), Vec3(0, 0, 0), Vec3(0, 0, 0));
-	Point p2 = Point(Vec3(0.5, 0, 0), Vec3(0, 0, 0), Vec3(0, 0, 0));
-	Point p3 = Point(Vec3(0, 0.5, 0), Vec3(0, 0, 0), Vec3(0, 0, 0));
-	Point p4 = Point(Vec3(0, 0, 0.5), Vec3(0, 0, 0), Vec3(0, 0, 0));
+
+	setMass(mass);
+	setStiffness(stiffness);
+	setDampingFactor(damping);
+
+	Point p1 = Point(Vec3(0, 0, 0), Vec3(-1, 0, 0), Vec3(0, 0, 0), m_fMass, m_fDamping);
+	Point p2 = Point(Vec3(0, 0.2, 0), Vec3(1, 0, 0), Vec3(0, 0, 0), m_fMass, m_fDamping);
+	
 	points.push_back(p1);
 	points.push_back(p2);
-	points.push_back(p3);
-	points.push_back(p4);
-	springs.push_back(Spring(&points[0], &points[1], 0, 0));
-	springs.push_back(Spring(&points[0], &points[2], 0, 0));
-	springs.push_back(Spring(&points[0], &points[3], 0, 0));
-	springs.push_back(Spring(&points[3], &points[2], 0, 0));
+
+	springs.push_back(Spring(&points[0], &points[1], m_fStiffness, initialLength));
 }
 
 // Functions
 const char * MassSpringSystemSimulator::getTestCasesStr(){ 
-	return "Euler, Leapfrog, Midpoint"; 
+	return "Euler, Leapfrog, Midpoint";
 }
 
 void MassSpringSystemSimulator::initUI(DrawingUtilitiesClass * DUC){
@@ -59,11 +65,12 @@ void MassSpringSystemSimulator::externalForcesCalculations(float timeElapsed){
 		camUpWorld = m.transformVectorNormal(camUpWorld);
 
 		// Add accumulated mouse deltas to movable object pos
-
-		/*float speedScale = 0.001f;
-		m_vfMovableObjectPos += speedScale * (float)m_trackmouse.x * camRightWorld;
-		m_vfMovableObjectPos += -speedScale * (float)m_trackmouse.y * camUpWorld;
-*/
+		float speedScale = 0.001f;
+		for (size_t i = 0; i < points.size(); i++)
+		{
+			points[i].position += speedScale * (float)m_trackmouse.x * camRightWorld;
+			points[i].position += -speedScale * (float)m_trackmouse.y * camUpWorld;
+		}
 
 		// Reset accumulated mouse deltas
 		m_trackmouse.x = m_trackmouse.y = 0;
@@ -73,7 +80,7 @@ void MassSpringSystemSimulator::simulateTimestep(float timeStep){
 	for (size_t i = 0; i < points.size(); i++)
 	{
 		points[i].resetForce();
-		points[i].addForce(Vec3(0, 0, 9.81)*points[i].mass);
+		points[i].addForce(Vec3(0, 0, -9.81)*points[i].mass);
 	}
 	for (size_t i = 0; i < springs.size(); i++)
 	{
@@ -83,8 +90,14 @@ void MassSpringSystemSimulator::simulateTimestep(float timeStep){
 	}
 	//TODO: Calculate new Position and Velocity
 }
-void MassSpringSystemSimulator::onClick(int x, int y){}
-void MassSpringSystemSimulator::onMouse(int x, int y){}
+void MassSpringSystemSimulator::onClick(int x, int y){
+	m_trackmouse.x += x - m_oldtrackmouse.x;
+	m_trackmouse.y += y - m_oldtrackmouse.y;
+}
+void MassSpringSystemSimulator::onMouse(int x, int y){
+	m_oldtrackmouse.x = x;
+	m_oldtrackmouse.y = y;
+}
 
 // Specific Functions
 void MassSpringSystemSimulator::setIntegrator(int integrator){}
