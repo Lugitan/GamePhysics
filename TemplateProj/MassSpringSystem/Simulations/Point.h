@@ -9,6 +9,7 @@ public:
 	~Point();
 	Vec3 position;
 	Vec3 velocity;
+	Vec3 force;
 	bool isFixed;
 	float mass;
 	float damping;
