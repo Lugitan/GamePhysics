@@ -8,6 +8,9 @@
       <Filter>util</Filter>
     </ClCompile>
     <ClCompile Include="TemplateSimulator.cpp" />
+    <ClCompile Include="MassSpringSystemSimulator.cpp" />
+    <ClCompile Include="Spring.cpp" />
+    <ClCompile Include="Point.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="util">
@@ -29,6 +32,8 @@
     <ClInclude Include="util\quaternion.h" />
     <ClInclude Include="util\timer.h" />
     <ClInclude Include="util\vectorbase.h" />
+    <ClInclude Include="Spring.h" />
+    <ClInclude Include="Point.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="effect.fx" />
