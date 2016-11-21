@@ -17,7 +17,7 @@ Spring::~Spring()
 }
 
 float Spring::currentLength(){
-	Vec3 p = point1->position + point2->position;
+	Vec3 p = point1->position - point2->position;
 	return sqrtf(powf(p.x, 2) + powf(p.y, 2) + powf(p.z, 2));
 }
 

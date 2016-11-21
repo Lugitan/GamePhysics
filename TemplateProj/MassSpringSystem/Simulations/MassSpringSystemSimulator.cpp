@@ -1,8 +1,9 @@
 #include "MassSpringSystemSimulator.h";
 
+const float GRAVITY = -0.001;
 float stiffness = 40;
 float mass = 10;
-float initialLength = 1;
+float initialLength = 5;
 int damping = 0;
 
 
@@ -10,13 +11,13 @@ int damping = 0;
 MassSpringSystemSimulator::MassSpringSystemSimulator()
 {
 	m_iTestCase = 0;
-
+	method = EULER;
 	setMass(mass);
 	setStiffness(stiffness);
 	setDampingFactor(damping);
 
-	Point p1 = Point(Vec3(0, 0, 0), Vec3(-1, 0, 0), Vec3(0, 0, 0), m_fMass, m_fDamping);
-	Point p2 = Point(Vec3(0, 0.2, 0), Vec3(1, 0, 0), Vec3(0, 0, 0), m_fMass, m_fDamping);
+	Point p1 = Point(Vec3(0, 2, 0.1), Vec3(0, 0, 0), Vec3(0, 0, 0), m_fMass, m_fDamping);
+	Point p2 = Point(Vec3(0, 2.2, 0), Vec3(0, 0, 0), Vec3(0, 0, 0), m_fMass, m_fDamping);
 	
 	points.push_back(p1);
 	points.push_back(p2);
@@ -76,20 +77,30 @@ void MassSpringSystemSimulator::externalForcesCalculations(float timeElapsed){
 		m_trackmouse.x = m_trackmouse.y = 0;
 	}
 }
+
+
 void MassSpringSystemSimulator::simulateTimestep(float timeStep){
+	/*old variant
 	for (size_t i = 0; i < points.size(); i++)
 	{
 		points[i].resetForce();
-		points[i].addForce(Vec3(0, 0, -9.81)*points[i].mass);
+		points[i].addForce(Vec3(0, GRAVITY, 0)*points[i].mass);
 	}
 	for (size_t i = 0; i < springs.size(); i++)
 	{
 		Vec3 force = springs[i].computeElasticForces();
-		springs[i].point1->addForce(force);
 		springs[i].point1->addForce(-force);
-	}
-	//TODO: Calculate new Position and Velocity
+		springs[i].point1->addForce(force);
+	}*/
+
+
+	integratePositions(timeStep);
+	integrateVelocity(timeStep);
+	integrateAccerleration(timeStep); //new variant
 }
+
+
+
 void MassSpringSystemSimulator::onClick(int x, int y){
 	m_trackmouse.x += x - m_oldtrackmouse.x;
 	m_trackmouse.y += y - m_oldtrackmouse.y;
@@ -135,6 +146,48 @@ Vec3 MassSpringSystemSimulator::getVelocityOfMassPoint(int index){
 void MassSpringSystemSimulator::applyExternalForce(Vec3 force){
 	for (size_t i = 0; i < points.size(); i++)
 	{
-		points[i].force += force;
+		points[i].addForce(force);
 	}
 }
+
+void MassSpringSystemSimulator::integratePositions(float timeStep){
+	switch (method)
+	{
+	case EULER:
+		for (size_t i = 0; i < points.size(); i++)
+		{
+			points[i].position = points[i].position + timeStep*points[i].velocity;
+			if (points[i].position.y <= 0){
+				points[i].position.y = 0.00000001;
+			}
+		}
+		break;
+	default:
+		break;
+	}
+}
+
+void MassSpringSystemSimulator::integrateVelocity(float timeStep){
+	switch (method)
+	{
+	case EULER:
+		for (size_t i = 0; i < points.size(); i++)
+		{
+			points[i].acceleration -= points[i].velocity*m_fDamping;
+			points[i].velocity = points[i].velocity + timeStep*points[i].acceleration;
+			if (points[i].position.y <= 0){
+				points[i].velocity.y = 0;
+			}
+		}
+		break;
+	default:
+		break;
+	}
+}
+
+//TODO needs to be implemented, use formula of internal and external Force
+void MassSpringSystemSimulator::integrateAccerleration(float timeStep) {
+
+}
+
+

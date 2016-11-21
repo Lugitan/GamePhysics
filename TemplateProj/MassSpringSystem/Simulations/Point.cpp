@@ -35,9 +35,10 @@ void Point::draw(DrawingUtilitiesClass * DUC, float size){
 }
 
 void Point::resetForce(){
-	acceleration = Vec3(0, 0, 0);
+	//acceleration = Vec3(0, 0, 0);
 }
 
 void Point::addForce(Vec3 force){
 	acceleration += force / mass;
 }
+

@@ -16,8 +16,7 @@ public:
 	void draw(DrawingUtilitiesClass * DUC, float size);
 	void addForce(Vec3 _force);
 	void resetForce();
-
-private:
 	Vec3 acceleration;
+
 };
 

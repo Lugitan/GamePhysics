@@ -39,6 +39,12 @@ public:
 	Vec3 getVelocityOfMassPoint(int index);
 	void applyExternalForce(Vec3 force);
 
+	void integratePositions(float timeStep);
+	void integrateVelocity(float timeStep);
+	void integrateAccerleration(float timeStep);
+	int method;
+
+
 private:
 	// Data Attributes
 	float m_fMass;
