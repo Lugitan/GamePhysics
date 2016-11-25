@@ -223,6 +223,7 @@
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Integrator.cpp" />
     <ClCompile Include="MassSpringSystemSimulator.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Spring.cpp" />
@@ -232,6 +233,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DrawingUtilitiesClass.h" />
+    <ClInclude Include="Integrator.h" />
     <ClInclude Include="MassSpringSystemSimulator.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Simulator.h" />

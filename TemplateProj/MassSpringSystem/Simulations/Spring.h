@@ -1,8 +1,6 @@
 #pragma once
-#include "Point.h"
-#include "Simulator.h"
-
-
+#include "Point.h";
+#include "Simulator.h";
 class Spring
 {
 public:
