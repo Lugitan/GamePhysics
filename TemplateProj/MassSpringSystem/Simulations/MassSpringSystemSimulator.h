@@ -46,7 +46,7 @@ public:
 	void integrateVelocity(float timeStep);
 	void integrateAcceleration(float timeStep);
 
-	Integrator<Point> integrator;
+
 
 private:
 	// Data Attributes

@@ -223,7 +223,6 @@
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Integrator.cpp" />
     <ClCompile Include="MassSpringSystemSimulator.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Spring.cpp" />

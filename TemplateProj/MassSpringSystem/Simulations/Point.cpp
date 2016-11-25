@@ -6,6 +6,7 @@ Point::Point()
 	position	= Vec3(0, 0, 0);
 	velocity	= Vec3(0, 0, 0);
 	force		= Vec3(0, 0, 0);
+	isFixed		= false;
 }
 
 Point::Point(Vec3 _position, Vec3 _velocity, Vec3 _force)
@@ -13,6 +14,7 @@ Point::Point(Vec3 _position, Vec3 _velocity, Vec3 _force)
 	position	= _position;
 	velocity	= _velocity;
 	force		= _force;
+	isFixed		= false;
 }
 
 
@@ -24,6 +26,7 @@ Point::Point(Vec3 _position, Vec3 _velocity, Vec3 _force, float _mass, float _da
 	addForce(_force);
 	mass		= _mass;
 	damping		= _damping;
+	isFixed		= false;
 }
 
 
