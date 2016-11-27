@@ -64,7 +64,6 @@ artifacts/
 *.tlb
 *.tli
 *.tlh
-*.tlog
 *.tmp
 *.tmp_proj
 *.log
@@ -274,3 +273,8 @@ __pycache__/
 
 # Cake - Uncomment if you are using it
 # tools/
+
+#Own Additions
+*.tlog
+*.res
+*.idb
