@@ -20,6 +20,7 @@ public:
 	
 	// Functions
 	const char * getTestCasesStr();
+	void setObjectsInScene();
 	void initUI(DrawingUtilitiesClass * DUC);
 	void reset();
 	void drawFrame(ID3D11DeviceContext* pd3dImmediateContext);

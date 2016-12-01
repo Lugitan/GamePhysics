@@ -20,7 +20,7 @@ Point::Point(Vec3 _position, Vec3 _velocity, Vec3 _force)
 
 Point::Point(Vec3 _position, Vec3 _velocity, Vec3 _force, float _mass, float _damping)
 {
-	position	= _position;
+	position = _position;
 	velocity	= _velocity;
 	resetForce();
 	addForce(_force);
@@ -28,8 +28,6 @@ Point::Point(Vec3 _position, Vec3 _velocity, Vec3 _force, float _mass, float _da
 	damping		= _damping;
 	isFixed		= false;
 }
-
-
 
 Point::~Point()
 {
