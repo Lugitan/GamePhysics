@@ -11,6 +11,7 @@
     <ClCompile Include="MassSpringSystemSimulator.cpp" />
     <ClCompile Include="Spring.cpp" />
     <ClCompile Include="Point.cpp" />
+    <ClCompile Include="RigidBodySystemSimulator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="util">
@@ -35,6 +36,10 @@
     <ClInclude Include="Spring.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Integrator.h" />
+    <ClInclude Include="collisionDetect.h" />
+    <ClInclude Include="RigidBodySystemSimulator.h" />
+    <ClInclude Include="RigidBodySystem.h" />
+    <ClInclude Include="RigidBodySystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="effect.fx" />
