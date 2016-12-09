@@ -1,29 +1,26 @@
 #pragma once
 #include "Simulator.h"
 
-template <class context>
 class Integrator
 {
 public:
 	Integrator()	{ setIntegrator(0); /*EULER*/ }
 	~Integrator()	{	}
-
-	
-	typedef Vec3 (*fabble)(float t, Vec3 y, context* ct);
+	typedef std::function < Vec3(float t, Vec3 y) > flambda;
 
 	void setIntegrator(int method)	{ this->method = method; };
-	
-	Vec3 integrate(Vec3 y, float t, float h, fabble f, context* ct) {
+
+	Vec3 integrate(Vec3 y, float t, float h, flambda f) {
 		switch (method){
 		case 2:		// MIDPOINT
-			return y + h * f(0.5*h, y + 0.5*h + f(t, y, ct), ct);
+			return y + h * f(0.5*h, y + 0.5*h + f(t, y));
 
 		case 1:		// LEAPFROG
-			return y + 0.5 * h * (f(h, y + h * f(t, y, ct), ct) + f(t, y, ct));
+			return y + 0.5 * h * (f(h, y + h * f(t, y)) + f(t, y));
 
 		case 0:		// EULER
 		default:
-			return y + h * f(t, y, ct);
+			return y + h * f(t, y);
 		}
 	}
 

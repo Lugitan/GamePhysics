@@ -45,7 +45,7 @@ public:
 	void integratePositions(float timeStep);
 	void integrateVelocity(float timeStep);
 	void integrateAcceleration(float timeStep);
-
+	void setStuffUp();
 
 
 private:

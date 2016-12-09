@@ -3,10 +3,10 @@
 const float GRAFITY = -0.001;
 const Vec3 GRAVITY = Vec3(0, -9.81, 0);
 float stiffness = 40;
-float mass = 10;
+float mass = 1;
 float initialLength = 0.1;
-float damping = 0.00;
-Integrator<Point> integrator;
+float damping = 0.25;
+Integrator integrator;
 
 //Construtors
 MassSpringSystemSimulator::MassSpringSystemSimulator()
@@ -17,7 +17,13 @@ MassSpringSystemSimulator::MassSpringSystemSimulator()
 	setMass(mass);
 	setStiffness(stiffness);
 	setDampingFactor(damping);
+	setStuffUp();
+	
+}
 
+void MassSpringSystemSimulator::setStuffUp(){
+	points.clear();
+	springs.clear();
 	Point p1 = Point(Vec3(0, 5, 0), Vec3(0, 0, 0), Vec3(0, 0, 0), m_fMass, m_fDamping);
 	Point p2 = Point(Vec3(1, 5, 0), Vec3(0, 0, 0), Vec3(0, 0, 0), m_fMass, m_fDamping);
 	Point p3 = Point(Vec3(2, 5, 0), Vec3(0, 0, 0), Vec3(0, 0, 0), m_fMass, m_fDamping);
@@ -59,7 +65,31 @@ void MassSpringSystemSimulator::drawFrame(ID3D11DeviceContext* pd3dImmediateCont
 	}
 }
 
-void MassSpringSystemSimulator::notifyCaseChanged(int testCase){}
+void MassSpringSystemSimulator::notifyCaseChanged(int testCase){
+
+	m_iTestCase = testCase;
+	switch (m_iTestCase)
+	{
+	case 0:
+		//Euler
+		integrator.setIntegrator(LEAPFROG);
+		setStuffUp();
+		break;
+	case 1:
+		//Midpoint
+		integrator.setIntegrator(LEAPFROG);
+		setStuffUp();
+		break;
+	case 2:
+		//LeapFrog
+		integrator.setIntegrator(LEAPFROG);
+		setStuffUp();
+		break;
+	default:
+		cout << "Empty Test!\n";
+		break;
+	}
+}
 
 void MassSpringSystemSimulator::externalForcesCalculations(float timeElapsed){
 	// Apply accumulated mouse deltas to g_vfMovableObjectPos (move along cameras view plane)
@@ -88,9 +118,33 @@ void MassSpringSystemSimulator::externalForcesCalculations(float timeElapsed){
 
 
 void MassSpringSystemSimulator::simulateTimestep(float timeStep){
-	integratePositions(timeStep);
-	integrateVelocity(timeStep);
-	integrateAcceleration(timeStep);	//>>>>>>>>> PUT LOOPS INSTEAD OF FUNCTIONS <<<<<<<<<<
+	for (size_t i = 0; i < points.size(); i++)
+	{
+
+		Vec3* v = &points[i].velocity;
+		Vec3* a = &points[i].acceleration;
+		if (!points[i].isFixed){
+			auto f = [v, a](float h, Vec3 y){
+				return integrator.integrate(*v, 0, h, [a](float h, Vec3 y){return *a; });
+			};
+			points[i].position = integrator.integrate(points[i].position, 0, timeStep, f);
+		}
+		if (points[i].position.y < 0.)
+			points[i].position.y = 0.000001;
+
+		points[i].acceleration -= points[i].damping*points[i].velocity;
+		points[i].velocity = integrator.integrate(points[i].velocity, 0, timeStep, [a](float h, Vec3 y){return *a; });
+	}
+	for (size_t i = 0; i < points.size(); i++)
+	{
+		points[i].acceleration = GRAVITY;
+	}
+	for (size_t j = 0; j < springs.size(); j++)
+	{
+		Vec3 foas = springs[j].computeElasticForces();
+		springs[j].point1->acceleration += foas / springs[j].point1->mass;
+		springs[j].point2->acceleration -= foas / springs[j].point2->mass;
+	}
 }
 
 
@@ -144,44 +198,4 @@ void MassSpringSystemSimulator::applyExternalForce(Vec3 force){
 		points[i].addForce(force);
 	}
 }
-
-Vec3 ivel(float t, Vec3 y, Point* ct){ return ct->acceleration; }
-
-Vec3 ipos(float h, Vec3 y, Point* ct){ 
-	return integrator.integrate(ct->velocity, 0, h, *ivel, ct);
-}
-
-void MassSpringSystemSimulator::integratePositions(float timeStep){
-	for (size_t i = 0; i < points.size(); i++)
-	{
-		if (!points[i].isFixed)
-			points[i].position = integrator.integrate(points[i].position, 0, timeStep, *ipos, &points[i]);
-		
-		if (points[i].position.y < 0.)
-			points[i].position.y = 0.000001;
-	}
-}
-
-void MassSpringSystemSimulator::integrateVelocity(float timeStep){
-	for (size_t i = 0; i < points.size(); i++)
-	{
-		points[i].acceleration -= points[i].damping*points[i].velocity;
-		points[i].velocity = integrator.integrate(points[i].velocity, 0, timeStep, *ivel, &points[i]);
-	}
-}
-
-void MassSpringSystemSimulator::integrateAcceleration(float timeStep){
-	for (size_t i = 0; i < points.size(); i++)
-	{
-		points[i].acceleration = GRAVITY; 
-	}
-
-	for (size_t j = 0; j < springs.size(); j++)
-	{
-		Vec3 foas = springs[j].computeElasticForces();
-		springs[j].point1->acceleration += foas / springs[j].point1->mass;
-		springs[j].point2->acceleration -= foas / springs[j].point2->mass;
-	}
-}
-
 
