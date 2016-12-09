@@ -223,17 +223,35 @@
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <ClCompile Include="MassSpringSystemSimulator.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Spring.cpp" />
+||||||| merged common ancestors
+=======
+    <ClCompile Include="MassSpringSystemSimulator.cpp" />
+    <ClCompile Include="Point.cpp" />
+    <ClCompile Include="RigidBodySystemSimulator.cpp" />
+    <ClCompile Include="Spring.cpp" />
+>>>>>>> 51b8ffeb4e66d4b129c02ce699cc599b496f1e0e
     <ClCompile Include="TemplateSimulator.cpp" />
     <ClCompile Include="util\FFmpeg.cpp" />
     <ClCompile Include="util\util.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="collisionDetect.h" />
     <ClInclude Include="DrawingUtilitiesClass.h" />
+    <ClInclude Include="Integrator.h" />
     <ClInclude Include="MassSpringSystemSimulator.h" />
+<<<<<<< HEAD
     <ClInclude Include="Point.h" />
+||||||| merged common ancestors
+=======
+    <ClInclude Include="Point.h" />
+    <ClInclude Include="RigidBodySystem.h" />
+    <ClInclude Include="RigidBodySystem.cpp" />
+    <ClInclude Include="RigidBodySystemSimulator.h" />
+>>>>>>> 51b8ffeb4e66d4b129c02ce699cc599b496f1e0e
     <ClInclude Include="Simulator.h" />
     <ClInclude Include="Spring.h" />
     <ClInclude Include="TemplateSimulator.h" />

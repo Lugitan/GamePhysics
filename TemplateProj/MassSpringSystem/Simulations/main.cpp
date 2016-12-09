@@ -20,9 +20,19 @@ using namespace GamePhysics;
 
 //#define ADAPTIVESTEP
 
+<<<<<<< HEAD
 //#define TEMPLATE_DEMO
 #define MASS_SPRING_SYSTEM
 //#define RIGID_BODY_SYSTEM
+||||||| merged common ancestors
+#define TEMPLATE_DEMO
+//#define MASS_SPRING_SYSTEM
+//#define RIGID_BODY_SYSTEM
+=======
+//#define TEMPLATE_DEMO
+//#define MASS_SPRING_SYSTEM
+#define RIGID_BODY_SYSTEM
+>>>>>>> 51b8ffeb4e66d4b129c02ce699cc599b496f1e0e
 //#define SPH_SYSTEM
 
 #ifdef TEMPLATE_DEMO
@@ -32,7 +42,7 @@ using namespace GamePhysics;
 #include "MassSpringSystemSimulator.h"
 #endif
 #ifdef RIGID_BODY_SYSTEM
-//#include "RigidBodySystemSimulator.h"
+#include "RigidBodySystemSimulator.h"
 #endif
 #ifdef SPH_SYSTEM
 //#include "SPHSystemSimulator.h"
@@ -362,7 +372,7 @@ int main(int argc, char* argv[])
 	g_pSimulator= new MassSpringSystemSimulator();
 #endif
 #ifdef RIGID_BODY_SYSTEM
-	//g_pSimulator= new RigidBodySystemSimulator();
+	g_pSimulator= new RigidBodySystemSimulator();
 #endif
 #ifdef SPH_SYSTEM
 	//g_pSimulator= new SPHSystemSimulator();

@@ -162,6 +162,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Simulations\PublicRigidBodiesTests.cpp" />
     <ClCompile Include="PublicMassSpringSystemTests.cpp" />
   </ItemGroup>
   <ItemGroup>

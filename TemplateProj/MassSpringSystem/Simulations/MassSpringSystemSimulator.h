@@ -1,8 +1,16 @@
 #ifndef MASSSPRINGSYSTEMSIMULATOR_h
 #define MASSSPRINGSYSTEMSIMULATOR_h
 #include "Simulator.h"
+<<<<<<< HEAD
 #include "Point.h"
 #include "Spring.h"
+||||||| merged common ancestors
+=======
+#include "Point.h"
+#include "Spring.h"
+#include "Integrator.h"
+
+>>>>>>> 51b8ffeb4e66d4b129c02ce699cc599b496f1e0e
 
 // Do Not Change
 #define EULER 0
@@ -18,6 +26,7 @@ public:
 	
 	// Functions
 	const char * getTestCasesStr();
+	void setObjectsInScene();
 	void initUI(DrawingUtilitiesClass * DUC);
 	void reset();
 	void drawFrame(ID3D11DeviceContext* pd3dImmediateContext);
@@ -38,6 +47,13 @@ public:
 	Vec3 getPositionOfMassPoint(int index);
 	Vec3 getVelocityOfMassPoint(int index);
 	void applyExternalForce(Vec3 force);
+	
+	/**/
+	void integratePositions(float timeStep);
+	void integrateVelocity(float timeStep);
+	void integrateAcceleration(float timeStep);
+
+
 
 	void integratePositions(float timeStep);
 	void integrateVelocity(float timeStep);

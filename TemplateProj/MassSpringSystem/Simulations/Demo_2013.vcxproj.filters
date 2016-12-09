@@ -8,9 +8,17 @@
       <Filter>util</Filter>
     </ClCompile>
     <ClCompile Include="TemplateSimulator.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="MassSpringSystemSimulator.cpp" />
     <ClCompile Include="Spring.cpp" />
     <ClCompile Include="Point.cpp" />
+||||||| merged common ancestors
+=======
+    <ClCompile Include="MassSpringSystemSimulator.cpp" />
+    <ClCompile Include="Spring.cpp" />
+    <ClCompile Include="Point.cpp" />
+    <ClCompile Include="RigidBodySystemSimulator.cpp" />
+>>>>>>> 51b8ffeb4e66d4b129c02ce699cc599b496f1e0e
   </ItemGroup>
   <ItemGroup>
     <Filter Include="util">
@@ -32,8 +40,19 @@
     <ClInclude Include="util\quaternion.h" />
     <ClInclude Include="util\timer.h" />
     <ClInclude Include="util\vectorbase.h" />
+<<<<<<< HEAD
     <ClInclude Include="Spring.h" />
     <ClInclude Include="Point.h" />
+||||||| merged common ancestors
+=======
+    <ClInclude Include="Spring.h" />
+    <ClInclude Include="Point.h" />
+    <ClInclude Include="Integrator.h" />
+    <ClInclude Include="collisionDetect.h" />
+    <ClInclude Include="RigidBodySystemSimulator.h" />
+    <ClInclude Include="RigidBodySystem.h" />
+    <ClInclude Include="RigidBodySystem.cpp" />
+>>>>>>> 51b8ffeb4e66d4b129c02ce699cc599b496f1e0e
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="effect.fx" />
