@@ -27,7 +27,7 @@ RigidBody::RigidBody(Vec3 _position, Vec3 _size, int _mass){
 RigidBody::~RigidBody(){
 }
 
-void draw(DrawingUtilitiesClass * DUC){
+void RigidBody::draw(DrawingUtilitiesClass * DUC){
 	DUC->drawRigidBody(Mat4(1.,0.,0.,0.,  
 							0.,1.,0.,0.,  
 							0.,0.,1.,0.,  
