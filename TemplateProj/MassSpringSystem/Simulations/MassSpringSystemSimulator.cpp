@@ -1,11 +1,11 @@
-#include "MassSpringSystemSimulator.h";
+#include "MassSpringSystemSimulator.h"
 
 const float GRAFITY = -0.001;
 const Vec3 GRAVITY = Vec3(0, -9.81, 0);
-float stiffness = 80;
-float mass = 1;
+float stiffness = 40;
+float mass = 10;
 float initialLength = 0.1;
-float damping = 0.25;
+float damping = 0.00;
 Integrator<Point> integrator;
 
 //Construtors
