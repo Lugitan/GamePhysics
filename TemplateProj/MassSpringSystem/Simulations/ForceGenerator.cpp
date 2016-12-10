@@ -22,7 +22,6 @@ Gravity::Gravity(const Vec3& gravity) : gravity(gravity){}
 
 void Gravity::updateForce(RigidBody* body, double duration)
 {
-cout << "GRAVITAY";
 	// Check that we do not have infinite mass
 	if(body->isFixed) return;
 	// Apply the mass-scaled force to the body

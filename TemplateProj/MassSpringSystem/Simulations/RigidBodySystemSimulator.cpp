@@ -1,7 +1,7 @@
 #include "RigidBodySystemSimulator.h"
 
-Gravity gravity = Gravity(Vec3(-0.1, 0, 0));
-float damp = 0.00;
+Gravity gravity = Gravity(Vec3(0,0, 0));
+float damp = 1;
 ForceRegistry forceRegistry;
 
 //Constructor
@@ -9,16 +9,18 @@ RigidBodySystemSimulator::RigidBodySystemSimulator()
 {
 	m_iTestCase = 0;
 	
-	
+	setTestObjects();
 }
 
 void RigidBodySystemSimulator::setTestObjects(){
 	rbs.clear();
 	forceRegistry.clear();
-	RigidBody rb1 = RigidBody(Vec3(1, 0, 0), Vec3(0.1, 0.2, 0.2), 10);
-	
-	forceRegistry.add(&rb1, &gravity);
+	RigidBody rb1 = RigidBody(Vec3(0, 0.5, 0), Vec3(0.1, 0.1, 0.1), 1, damp, damp);
+	rb1.addForceAtLocalPoint(Vec3(0, 50, 0), Vec3(0,0,1));
+	rb1.addForce(Vec3(0, -50, 0));
 	rbs.push_back(rb1);
+	
+	forceRegistry.add(&rbs[0], &gravity);
 }
 
 // Functions
@@ -106,7 +108,7 @@ Vec3 RigidBodySystemSimulator::getLinearVelocityOfRigidBody(int i) {
 }
 
 Vec3 RigidBodySystemSimulator::getAngularVelocityOfRigidBody(int i) {
-	return rbs[i].rotation;
+	return rbs[i].angularVelocity;
 }
 
 void RigidBodySystemSimulator::applyForceOnBody(int i, Vec3 loc, Vec3 force) {
@@ -114,7 +116,7 @@ void RigidBodySystemSimulator::applyForceOnBody(int i, Vec3 loc, Vec3 force) {
 }
 
 void RigidBodySystemSimulator::addRigidBody(Vec3 position, Vec3 size, int mass) {
-	rbs.push_back(RigidBody(position, size, mass));
+	rbs.push_back(RigidBody(position, size, mass, damp, damp));
 }
 
 void RigidBodySystemSimulator::setOrientationOf(int i, Quat orientation) {

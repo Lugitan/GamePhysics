@@ -12,6 +12,7 @@ public:
 	static void setIntegrator(int _integrationMethod)	{ integrationMethod = _integrationMethod; }
 
 	static Vec3 integrate(Vec3 y, float t, float h, flambda f) {
+		Vec3 res;
 		switch (integrationMethod){
 		case 2:		// MIDPOINT
 			return y + h * f(0.5*h, y + 0.5*h + f(t, y));
