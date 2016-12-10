@@ -13,6 +13,7 @@
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="RigidBodySystemSimulator.cpp" />
+    <ClCompile Include="ForceGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="util">
@@ -39,6 +40,7 @@
     <ClInclude Include="Integrator.h" />
     <ClInclude Include="RigidBody.h" />
     <ClInclude Include="RigidBodySystemSimulator.h" />
+    <ClInclude Include="ForceGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="effect.fx" />

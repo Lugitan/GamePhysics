@@ -1,6 +1,7 @@
 #pragma once
 #include "Simulator.h"
 
+static int integrationMethod;
 class Integrator
 {
 public:
@@ -8,10 +9,10 @@ public:
 	~Integrator()	{	}
 	typedef std::function < Vec3(float t, Vec3 y) > flambda;
 
-	void setIntegrator(int method)	{ this->method = method; };
+	static void setIntegrator(int _integrationMethod)	{ integrationMethod = _integrationMethod; }
 
-	Vec3 integrate(Vec3 y, float t, float h, flambda f) {
-		switch (method){
+	static Vec3 integrate(Vec3 y, float t, float h, flambda f) {
+		switch (integrationMethod){
 		case 2:		// MIDPOINT
 			return y + h * f(0.5*h, y + 0.5*h + f(t, y));
 
@@ -26,14 +27,6 @@ public:
 
 private:
 	
-	/*
-	#define EULER 0
-	#define LEAPFROG 1
-	#define MIDPOINT 2
-	*/
-	
-	int method;
-
 };
 
 

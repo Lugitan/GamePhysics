@@ -2,8 +2,14 @@
 #define RIGIDBODYSYSTEMSIMULATOR_h
 #include "Simulator.h"
 #include "RigidBody.h"
+#include "ForceGenerator.h"
 
 #define TESTCASEUSEDTORUNTEST 2
+// Do Not Change
+#define EULER 0
+#define LEAPFROG 1
+#define MIDPOINT 2
+// Do Not Change
 
 class RigidBodySystemSimulator:public Simulator{
 public:
@@ -31,11 +37,14 @@ public:
 	void setOrientationOf(int i,Quat orientation);
 	void setVelocityOf(int i, Vec3 velocity);
 
+
+	void setTestObjects();
+
+	vector<RigidBody> rbs;
 private:
 	// Attributes
 	float m_fMass;
 	float m_fDamping;
-	vector<RigidBody> rbs;
 
 	// UI Attributes
 	Vec3 m_externalForce;

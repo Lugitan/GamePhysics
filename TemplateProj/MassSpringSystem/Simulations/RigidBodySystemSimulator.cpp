@@ -1,18 +1,25 @@
 #include "RigidBodySystemSimulator.h"
 
-const Vec3 GRAVITY = Vec3(0, -9.81, 0);
+Gravity gravity = Gravity(Vec3(-0.1, 0, 0));
 float damp = 0.00;
+ForceRegistry forceRegistry;
 
 //Constructor
 RigidBodySystemSimulator::RigidBodySystemSimulator() 
 {
 	m_iTestCase = 0;
 	
-	RigidBody rb1 = RigidBody(Vec3(0, 0, 0), GamePhysics::Quat(0, 0, 0, 0), Vec3(0, 0, 0), Vec3(0, 0, 0), 0.0);
-
-	rbs.push_back(rb1);
+	
 }
 
+void RigidBodySystemSimulator::setTestObjects(){
+	rbs.clear();
+	forceRegistry.clear();
+	RigidBody rb1 = RigidBody(Vec3(1, 0, 0), Vec3(0.1, 0.2, 0.2), 10);
+	
+	forceRegistry.add(&rb1, &gravity);
+	rbs.push_back(rb1);
+}
 
 // Functions
 const char * RigidBodySystemSimulator::getTestCasesStr(){
@@ -39,7 +46,28 @@ void RigidBodySystemSimulator::drawFrame(ID3D11DeviceContext* pd3dImmediateConte
 }
 
 void RigidBodySystemSimulator::notifyCaseChanged(int testCase) {
-
+	m_iTestCase = testCase;
+	switch (m_iTestCase)
+	{
+	case 0:
+		//Euler
+		Integrator::setIntegrator(LEAPFROG);
+		setTestObjects();
+		break;
+	case 1:
+		//Midpoint
+		Integrator::setIntegrator(LEAPFROG);
+		setTestObjects();
+		break;
+	case 2:
+		//LeapFrog
+		Integrator::setIntegrator(LEAPFROG);
+		setTestObjects();
+		break;
+	default:
+		cout << "Empty Test!\n";
+		break;
+	}
 }
 
 void RigidBodySystemSimulator::externalForcesCalculations(float timeElapsed){
@@ -47,6 +75,11 @@ void RigidBodySystemSimulator::externalForcesCalculations(float timeElapsed){
 }
 
 void RigidBodySystemSimulator::simulateTimestep(float timeStep) {
+	forceRegistry.updateForces(timeStep);
+	for (size_t i = 0; i < rbs.size(); i++)
+	{
+		rbs[i].integrate(timeStep);
+	}
 
 }
 
@@ -73,7 +106,7 @@ Vec3 RigidBodySystemSimulator::getLinearVelocityOfRigidBody(int i) {
 }
 
 Vec3 RigidBodySystemSimulator::getAngularVelocityOfRigidBody(int i) {
-	return rbs[i].angvelocity;
+	return rbs[i].rotation;
 }
 
 void RigidBodySystemSimulator::applyForceOnBody(int i, Vec3 loc, Vec3 force) {

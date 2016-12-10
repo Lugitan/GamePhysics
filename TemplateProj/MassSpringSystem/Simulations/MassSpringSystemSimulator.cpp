@@ -6,14 +6,13 @@ float stiffness = 40;
 float mass = 1;
 float initialLength = 0.1;
 float damping = 0.25;
-Integrator integrator;
 
 //Construtors
 MassSpringSystemSimulator::MassSpringSystemSimulator()
 {
 	m_iTestCase = 0;
 	
-	integrator.setIntegrator(LEAPFROG);
+	Integrator::setIntegrator(LEAPFROG);
 	setMass(mass);
 	setStiffness(stiffness);
 	setDampingFactor(damping);
@@ -72,17 +71,17 @@ void MassSpringSystemSimulator::notifyCaseChanged(int testCase){
 	{
 	case 0:
 		//Euler
-		integrator.setIntegrator(LEAPFROG);
+		Integrator::setIntegrator(LEAPFROG);
 		setStuffUp();
 		break;
 	case 1:
 		//Midpoint
-		integrator.setIntegrator(LEAPFROG);
+		Integrator::setIntegrator(LEAPFROG);
 		setStuffUp();
 		break;
 	case 2:
 		//LeapFrog
-		integrator.setIntegrator(LEAPFROG);
+		Integrator::setIntegrator(LEAPFROG);
 		setStuffUp();
 		break;
 	default:
@@ -125,15 +124,15 @@ void MassSpringSystemSimulator::simulateTimestep(float timeStep){
 		Vec3* a = &points[i].acceleration;
 		if (!points[i].isFixed){
 			auto f = [v, a](float h, Vec3 y){
-				return integrator.integrate(*v, 0, h, [a](float h, Vec3 y){return *a; });
+				return Integrator::integrate(*v, 0, h, [a](float h, Vec3 y){return *a; });
 			};
-			points[i].position = integrator.integrate(points[i].position, 0, timeStep, f);
+			points[i].position = Integrator::integrate(points[i].position, 0, timeStep, f);
 		}
 		if (points[i].position.y < 0.)
 			points[i].position.y = 0.000001;
 
 		points[i].acceleration -= points[i].damping*points[i].velocity;
-		points[i].velocity = integrator.integrate(points[i].velocity, 0, timeStep, [a](float h, Vec3 y){return *a; });
+		points[i].velocity = Integrator::integrate(points[i].velocity, 0, timeStep, [a](float h, Vec3 y){return *a; });
 	}
 	for (size_t i = 0; i < points.size(); i++)
 	{
@@ -159,7 +158,7 @@ void MassSpringSystemSimulator::onMouse(int x, int y){
 
 // Specific Functions
 void MassSpringSystemSimulator::setIntegrator(int _integrator){
-	integrator.setIntegrator(_integrator);
+	Integrator::setIntegrator(_integrator);
 }
 void MassSpringSystemSimulator::setMass(float mass){
 	m_fMass = mass;
