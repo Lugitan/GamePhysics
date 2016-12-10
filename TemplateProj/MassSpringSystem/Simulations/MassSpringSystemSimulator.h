@@ -3,6 +3,8 @@
 #include "Simulator.h"
 #include "Point.h"
 #include "Spring.h"
+#include "Integrator.h"
+
 
 // Do Not Change
 #define EULER 0
@@ -38,6 +40,13 @@ public:
 	Vec3 getPositionOfMassPoint(int index);
 	Vec3 getVelocityOfMassPoint(int index);
 	void applyExternalForce(Vec3 force);
+	
+	/**/
+	void integratePositions(float timeStep);
+	void integrateVelocity(float timeStep);
+	void integrateAcceleration(float timeStep);
+	void setStuffUp();
+
 
 private:
 	// Data Attributes

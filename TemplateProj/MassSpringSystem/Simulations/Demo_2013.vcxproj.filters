@@ -8,6 +8,12 @@
       <Filter>util</Filter>
     </ClCompile>
     <ClCompile Include="TemplateSimulator.cpp" />
+    <ClCompile Include="MassSpringSystemSimulator.cpp" />
+    <ClCompile Include="Spring.cpp" />
+    <ClCompile Include="Point.cpp" />
+    <ClCompile Include="RigidBody.cpp" />
+    <ClCompile Include="RigidBodySystemSimulator.cpp" />
+    <ClCompile Include="ForceGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="util">
@@ -29,6 +35,12 @@
     <ClInclude Include="util\quaternion.h" />
     <ClInclude Include="util\timer.h" />
     <ClInclude Include="util\vectorbase.h" />
+    <ClInclude Include="Spring.h" />
+    <ClInclude Include="Point.h" />
+    <ClInclude Include="Integrator.h" />
+    <ClInclude Include="RigidBody.h" />
+    <ClInclude Include="RigidBodySystemSimulator.h" />
+    <ClInclude Include="ForceGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="effect.fx" />
