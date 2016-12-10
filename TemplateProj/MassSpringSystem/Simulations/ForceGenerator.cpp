@@ -22,11 +22,20 @@ Gravity::Gravity(const Vec3& gravity) : gravity(gravity){}
 
 void Gravity::updateForce(RigidBody* body, double duration)
 {
-	// Check that we do not have infinite mass
-	if(body->isFixed) return;
 	// Apply the mass-scaled force to the body
-	body->addForce(gravity * body->inv_mass);
+	body->addForce(gravity / body->inv_mass);
 }
+
+ForceOverTimeAt::ForceOverTimeAt(Real _from, Real _until, Vec3 _force, Vec3 _at) :
+	time(0), from(_from), until(_until), force(_force), at(_at)  {}
+
+void ForceOverTimeAt::updateForce(RigidBody* body, double duration){
+	time += duration;
+	if (time > from && time < until){
+		body->addForceAtWorldPoint(force, at);
+	}
+}
+
 
 Spring::Spring(const Vec3 &localConnectionPt,
 	RigidBody *other,

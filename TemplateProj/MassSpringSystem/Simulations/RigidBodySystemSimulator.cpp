@@ -1,6 +1,7 @@
 #include "RigidBodySystemSimulator.h"
 
-Gravity gravity = Gravity(Vec3(0,0, 0));
+Gravity gravity = Gravity(Vec3(0, 0, 0));
+
 float damp = 1;
 ForceRegistry forceRegistry;
 
@@ -15,11 +16,9 @@ RigidBodySystemSimulator::RigidBodySystemSimulator()
 void RigidBodySystemSimulator::setTestObjects(){
 	rbs.clear();
 	forceRegistry.clear();
-	RigidBody rb1 = RigidBody(Vec3(0, 0.5, 0), Vec3(0.1, 0.1, 0.1), 1, damp, damp);
-	rb1.addForceAtLocalPoint(Vec3(0, 5, 0), Vec3(0,0,1));
-	rb1.addForce(Vec3(0, 5, 0));
+	RigidBody rb1 = RigidBody(Vec3(0, 0, 0), Vec3(1, 1, 1), 1.5, damp, damp);
+	rb1.addForceAtLocalPoint(Vec3(0, 10, 0), Vec3(1,0,0));
 	rbs.push_back(rb1);
-	
 	forceRegistry.add(&rbs[0], &gravity);
 }
 

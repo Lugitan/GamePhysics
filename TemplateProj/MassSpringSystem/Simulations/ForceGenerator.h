@@ -34,6 +34,17 @@ public:
 	virtual void updateForce(RigidBody *body, double duration);
 };
 
+class ForceOverTimeAt : public ForceGenerator{
+	ForceOverTimeAt(Real _time, Real _until, Vec3 _force, Vec3 _at);
+	Real from;
+	Real time;
+	Real until;
+	Vec3 force;
+	Vec3 at;
+
+	virtual void updateForce(RigidBody *body, double duration);
+};
+
 class ForceRegistry{
 private:
 	// Keeps track of one force generator and the body it applies to.

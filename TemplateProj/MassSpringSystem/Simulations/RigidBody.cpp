@@ -14,6 +14,8 @@ RigidBody::RigidBody(Vec3 _position, Quat _orientation, Vec3 _velocity, Vec3 _an
 	velocity		= _velocity;
 	angularVelocity	= _angvelocity;
 	inv_mass		= _inv_mass;
+	linearDamping = 1;
+	angularDamping = 1;
 }
 
 RigidBody::RigidBody(Vec3 _position, Vec3 _size, int _mass, double _linearDamping, double _angularDamping) :
@@ -25,7 +27,7 @@ RigidBody::RigidBody(Vec3 _position, Vec3 _size, int _mass, double _linearDampin
 	linearDamping(_linearDamping),
 	angularDamping(_angularDamping)
 {
-	if (_mass <= 0){
+	if (_mass < 1){
 		isFixed = true;
 	}
 	else {
@@ -35,7 +37,7 @@ RigidBody::RigidBody(Vec3 _position, Vec3 _size, int _mass, double _linearDampin
 	double x2 = size.x*size.x;
 	double y2 = size.y*size.y;
 	double z2 = size.z*size.z;
-	inv_inertia.initScaling(1./12 * _mass*(y2 + z2), 1./12*_mass*(x2*z2), 1./12*_mass*(x2+y2));
+	inv_inertia.initScaling(1./12. * _mass*(y2 + z2), 1./12.*_mass*(x2+z2), 1./12.*_mass*(x2+y2));
 	inv_inertia = inv_inertia.inverse();
 }
 
@@ -62,20 +64,20 @@ void RigidBody::calculateFixedData(){
 }
 
 Real damp(Real a, Real v, Real damp, Real inv_mass){
-	if (a == 0) return 0;
+	if (a == 0) return 0.;
 	Real newA = a - damp*v*inv_mass;
 	if (abs(a) + abs(newA) > abs(a + newA)) return 0;
 	return newA;
 }
 
 void RigidBody::integrate(double timeStep){
-
+	if (isFixed) return;
 	
 	position += timeStep*velocity;
 	velocity += timeStep*(force / inv_mass);
 
-	orientation += timeStep / 2 * Quat(0, angularVelocity.x, angularVelocity.y, angularVelocity.z)*orientation;
-
+	orientation += timeStep / 2. * Quat(angularVelocity.x, angularVelocity.y, angularVelocity.z, 0)*orientation;
+	orientation = orientation.unit();
 	angularMomentum += timeStep*torque;
 	Mat4 ortTransposed = orientation.getRotMat();
 	Mat4 curr_inv_inertia = ortTransposed*inv_inertia;
@@ -86,8 +88,10 @@ void RigidBody::integrate(double timeStep){
 	force = Vec3();
 	torque = Vec3();
 
-	cout << orientation << "\n";
-	orientation.norm();
+	
+	// y part of angularVelocity behaves weirdly
+	cout << angularMomentum << "\t" << angularVelocity << "\t" << orientation << "\n";
+
 }
 
 void RigidBody::addForce(Vec3 _force){
@@ -100,7 +104,7 @@ void RigidBody::addForceAtWorldPoint(Vec3 _force, Vec3 pos){
 }
 
 void RigidBody::addForceAtLocalPoint(Vec3 _force, Vec3 pos){
-	torque += cross(pos, _force);
 	force += _force;
+	torque += cross(pos, _force);
 }
 
