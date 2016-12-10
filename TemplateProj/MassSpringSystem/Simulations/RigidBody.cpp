@@ -35,7 +35,7 @@ RigidBody::RigidBody(Vec3 _position, Vec3 _size, int _mass, double _linearDampin
 	double x2 = size.x*size.x;
 	double y2 = size.y*size.y;
 	double z2 = size.z*size.z;
-	inv_inertia.initScaling(1./12 * _mass*(y2 + 2), 1./12*_mass*(x2*z2), 1./12*_mass*(x2+y2));
+	inv_inertia.initScaling(1./12 * _mass*(y2 + z2), 1./12*_mass*(x2*z2), 1./12*_mass*(x2+y2));
 	inv_inertia = inv_inertia.inverse();
 }
 
@@ -86,8 +86,8 @@ void RigidBody::integrate(double timeStep){
 	force = Vec3();
 	torque = Vec3();
 
-	cout << orientation << angularVelocity << "\n";
-	
+	cout << orientation << "\n";
+	orientation.norm();
 }
 
 void RigidBody::addForce(Vec3 _force){

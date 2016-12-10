@@ -16,8 +16,8 @@ void RigidBodySystemSimulator::setTestObjects(){
 	rbs.clear();
 	forceRegistry.clear();
 	RigidBody rb1 = RigidBody(Vec3(0, 0.5, 0), Vec3(0.1, 0.1, 0.1), 1, damp, damp);
-	rb1.addForceAtLocalPoint(Vec3(0, 50, 0), Vec3(0,0,1));
-	rb1.addForce(Vec3(0, -50, 0));
+	rb1.addForceAtLocalPoint(Vec3(0, 5, 0), Vec3(0,0,1));
+	rb1.addForce(Vec3(0, 5, 0));
 	rbs.push_back(rb1);
 	
 	forceRegistry.add(&rbs[0], &gravity);
