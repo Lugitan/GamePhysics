@@ -23,6 +23,7 @@ MassSpringSystemSimulator::MassSpringSystemSimulator()
 void MassSpringSystemSimulator::setStuffUp(){
 	points.clear();
 	springs.clear();
+	/*
 	Point p1 = Point(Vec3(0, 5, 0), Vec3(0, 0, 0), Vec3(0, 0, 0), m_fMass, m_fDamping);
 	Point p2 = Point(Vec3(1, 5, 0), Vec3(0, 0, 0), Vec3(0, 0, 0), m_fMass, m_fDamping);
 	Point p3 = Point(Vec3(2, 5, 0), Vec3(0, 0, 0), Vec3(0, 0, 0), m_fMass, m_fDamping);
@@ -36,6 +37,7 @@ void MassSpringSystemSimulator::setStuffUp(){
 	springs.push_back(Spring(&points[0], &points[1], m_fStiffness, initialLength));
 	springs.push_back(Spring(&points[1], &points[2], m_fStiffness, initialLength));
 	springs.push_back(Spring(&points[2], &points[3], m_fStiffness, initialLength));
+	*/
 }
 
 // Functions
@@ -174,7 +176,7 @@ int MassSpringSystemSimulator::addMassPoint(Vec3 position, Vec3 Velocity, bool i
 	p.isFixed = isFixed;
 	points.push_back(p);
 	
-	return -1;
+	return 0;
 }
 void MassSpringSystemSimulator::addSpring(int masspoint1, int masspoint2, float initialLength){
 	springs.push_back(Spring(&points[masspoint1], &points[masspoint2], m_fStiffness, initialLength));

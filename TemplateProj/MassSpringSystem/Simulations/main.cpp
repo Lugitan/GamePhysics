@@ -20,9 +20,9 @@ using namespace GamePhysics;
 
 //#define ADAPTIVESTEP
 
-#define TEMPLATE_DEMO
+//#define TEMPLATE_DEMO
 //#define MASS_SPRING_SYSTEM
-//#define RIGID_BODY_SYSTEM
+#define RIGID_BODY_SYSTEM
 //#define SPH_SYSTEM
 
 #ifdef TEMPLATE_DEMO

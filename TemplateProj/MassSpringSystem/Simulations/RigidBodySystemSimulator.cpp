@@ -16,10 +16,6 @@ RigidBodySystemSimulator::RigidBodySystemSimulator()
 void RigidBodySystemSimulator::setTestObjects(){
 	rbs.clear();
 	forceRegistry.clear();
-	RigidBody rb1 = RigidBody(Vec3(0, 0, 0), Vec3(1, 1, 1), 1.5, damp, damp);
-	rb1.addForceAtLocalPoint(Vec3(0, 10, 0), Vec3(1,0,0));
-	rbs.push_back(rb1);
-	forceRegistry.add(&rbs[0], &gravity);
 }
 
 // Functions
@@ -72,11 +68,10 @@ void RigidBodySystemSimulator::notifyCaseChanged(int testCase) {
 }
 
 void RigidBodySystemSimulator::externalForcesCalculations(float timeElapsed){
-
+	forceRegistry.updateForces(timeElapsed);
 }
 
 void RigidBodySystemSimulator::simulateTimestep(float timeStep) {
-	forceRegistry.updateForces(timeStep);
 	for (size_t i = 0; i < rbs.size(); i++)
 	{
 		rbs[i].integrate(timeStep);
@@ -111,7 +106,7 @@ Vec3 RigidBodySystemSimulator::getAngularVelocityOfRigidBody(int i) {
 }
 
 void RigidBodySystemSimulator::applyForceOnBody(int i, Vec3 loc, Vec3 force) {
-
+	rbs[i].addForceAtWorldPoint(force, loc);
 }
 
 void RigidBodySystemSimulator::addRigidBody(Vec3 position, Vec3 size, int mass) {

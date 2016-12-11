@@ -74,7 +74,7 @@ void RigidBody::integrate(double timeStep){
 	if (isFixed) return;
 	
 	position += timeStep*velocity;
-	velocity += timeStep*(force / inv_mass);
+	velocity += timeStep*(force * inv_mass);
 
 	orientation += timeStep / 2. * Quat(angularVelocity.x, angularVelocity.y, angularVelocity.z, 0)*orientation;
 	orientation = orientation.unit();
@@ -100,7 +100,7 @@ void RigidBody::addForce(Vec3 _force){
 
 void RigidBody::addForceAtWorldPoint(Vec3 _force, Vec3 pos){
 	pos -= position;
-	addForceAtLocalPoint(_force, position);
+	addForceAtLocalPoint(_force, pos);
 }
 
 void RigidBody::addForceAtLocalPoint(Vec3 _force, Vec3 pos){
