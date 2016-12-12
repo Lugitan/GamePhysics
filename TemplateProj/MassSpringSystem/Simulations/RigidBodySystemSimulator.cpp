@@ -72,7 +72,8 @@ void RigidBodySystemSimulator::notifyCaseChanged(int testCase) {
 }
 
 void checkCollision(RigidBody* o1, RigidBody* o2){
-	checkCollisionSAT(o1->transformMatrix, o2->transformMatrix);
+	CollisionInfo info = checkCollisionSAT(o1->transformMatrix, o2->transformMatrix);
+	
 }
 
 void RigidBodySystemSimulator::externalForcesCalculations(float timeElapsed){
