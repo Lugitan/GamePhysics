@@ -1,7 +1,7 @@
 #include "RigidBodySystemSimulator.h"
 
 Gravity gravity = Gravity(Vec3(0, 0, 0));
-Real c = 1.;
+Real c = 0;
 
 float damp = 1;
 ForceRegistry forceRegistry;
@@ -18,7 +18,8 @@ void RigidBodySystemSimulator::setTestObjects(){
 	rbs.clear();
 	forceRegistry.clear();
 	rbs.push_back(RigidBody(Vec3(0.2, 0, 0), Vec3(0.1, 0.1, 0.1), 1, damp, damp));
-	rbs.push_back(RigidBody(Vec3(-0.2, 0, 0), Vec3(0.1, 0.1, 0.1), 1, damp, damp));
+	rbs.push_back(RigidBody(Vec3(-0.2, 0, 0), Vec3(0.1, 0.3, 0.1), 1, damp, damp));
+	rbs[0].isFixed = true;
 	rbs[0].addForce(Vec3(-40, 0, 0));
 	rbs[1].addForceAtLocalPoint(Vec3(40, 0, 0), Vec3(0,0.01,0.01));
 }
@@ -84,20 +85,25 @@ void checkCollision(RigidBody* a, RigidBody* b){
 		Vec3 velocityBpoint = b->velocity + cross(b->angularVelocity, xb);
 		Vec3 vrel = velocityApoint - velocityBpoint;
 
-		Real j = dot((-(1. + c))*vrel,n) / (
-			(a->isFixed ? 0 : a->inv_mass) +
-			(b->isFixed ? 0 : b->inv_mass) +
-			dot( cross(a->inv_inertia.transformVector(cross(xa, n)), xa) +
-			  cross(b->inv_inertia.transformVector(cross(xb, n)), xb)
+		Real amass = (a->isFixed ? 0 : a->inv_mass);
+		Real bmass = (b->isFixed ? 0 : b->inv_mass);
+		Mat4 ainertia = a->isFixed ? Mat4() : a->inv_inertia;
+		Mat4 binertia = b->isFixed ? Mat4() : b->inv_inertia;
+
+		Real j = dot((-(1. + c))*vrel,n) / (amass +	bmass +
+			dot( cross(ainertia.transformVector(cross(xa, n)), xa) +
+			  cross(ainertia.transformVector(cross(xb, n)), xb)
 			  ,n)
 			);
 
-		cout << "\nSuccess! j:" << j << " \tvrel: " << vrel << "\t n: "<<n << "\t depth: " << info.depth;
-		if(!a->isFixed) a->velocity += j*n * a->inv_mass;
-		if(!b->isFixed) b->velocity -= j*n * b->inv_mass;
+		//cout << "\nSuccess! j:" << j << " \tvrel: " << vrel << "\t n: "<<n << "\t depth: " << info.depth;
+		if (j > 0){
+			if (!a->isFixed) a->velocity += j*n * a->inv_mass;
+			if (!b->isFixed) b->velocity -= j*n * b->inv_mass;
 
-		if (!a->isFixed) a->angularMomentum += cross(xa, j*n);
-		if (!b->isFixed) b->angularMomentum -= cross(xb, j*n);
+			if (!a->isFixed) a->angularMomentum += cross(xa, j*n);
+			if (!b->isFixed) b->angularMomentum -= cross(xb, j*n);
+		}
 	}
 }
 void RigidBodySystemSimulator::externalForcesCalculations(float timeElapsed){

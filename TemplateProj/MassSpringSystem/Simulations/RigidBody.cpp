@@ -65,23 +65,23 @@ Real damp(Real a, Real v, Real damp, Real inv_mass){
 }
 
 void RigidBody::integrate(double timeStep){
-	if (isFixed) return;
-	
-	position += timeStep*velocity;
-	velocity += timeStep*(force * inv_mass);
+	if (!isFixed){
 
-	orientation += timeStep / 2. * Quat(angularVelocity.x, angularVelocity.y, angularVelocity.z, 0)*orientation;
-	orientation = orientation.unit();
-	angularMomentum += timeStep*torque;
-	Mat4 ortTransposed = orientation.getRotMat();
-	Mat4 curr_inv_inertia = ortTransposed*inv_inertia;
-	ortTransposed.transpose();
-	curr_inv_inertia *= ortTransposed;
-	angularVelocity = curr_inv_inertia * angularMomentum;
-	
-	force = Vec3();
-	torque = Vec3();
+		position += timeStep*velocity;
+		velocity += timeStep*(force * inv_mass);
 
+		orientation += timeStep / 2. * Quat(angularVelocity.x, angularVelocity.y, angularVelocity.z, 0)*orientation;
+		orientation = orientation.unit();
+		angularMomentum += timeStep*torque;
+		Mat4 ortTransposed = orientation.getRotMat();
+		Mat4 curr_inv_inertia = ortTransposed*inv_inertia;
+		ortTransposed.transpose();
+		curr_inv_inertia *= ortTransposed;
+		angularVelocity = curr_inv_inertia * angularMomentum;
+
+		force = Vec3();
+		torque = Vec3();
+	}
 
 
 	//Calculate transformMatrix... needs to be done for draw anyways
