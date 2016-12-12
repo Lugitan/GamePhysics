@@ -1,6 +1,7 @@
 #include "RigidBodySystemSimulator.h"
 
 Gravity gravity = Gravity(Vec3(0, 0, 0));
+Real c = 1.;
 
 float damp = 1;
 ForceRegistry forceRegistry;
@@ -16,10 +17,10 @@ RigidBodySystemSimulator::RigidBodySystemSimulator()
 void RigidBodySystemSimulator::setTestObjects(){
 	rbs.clear();
 	forceRegistry.clear();
-	rbs.push_back(RigidBody(Vec3(0.25, 0, 0), Vec3(0.1, 0.1, 0.1), 3, damp, damp));
-	rbs.push_back(RigidBody(Vec3(-0.25, 0, 0), Vec3(0.1, 0.1, 0.1), 3, damp, damp));
-	rbs[0].addForce(Vec3(-30, 0, 0));
-	rbs[1].addForce(Vec3(30, 0, 0));
+	rbs.push_back(RigidBody(Vec3(0.2, 0, 0), Vec3(0.1, 0.1, 0.1), 1, damp, damp));
+	rbs.push_back(RigidBody(Vec3(-0.2, 0, 0), Vec3(0.1, 0.1, 0.1), 1, damp, damp));
+	rbs[0].addForce(Vec3(-40, 0, 0));
+	rbs[1].addForceAtLocalPoint(Vec3(40, 0, 0), Vec3(0,0.01,0.01));
 }
 
 // Functions
@@ -71,20 +72,46 @@ void RigidBodySystemSimulator::notifyCaseChanged(int testCase) {
 	}
 }
 
-void checkCollision(RigidBody* o1, RigidBody* o2){
-	CollisionInfo info = checkCollisionSAT(o1->transformMatrix, o2->transformMatrix);
-	
-}
+int counter = 0;
+void checkCollision(RigidBody* a, RigidBody* b){
+	CollisionInfo info = checkCollisionSAT(a->transformMatrix, b->transformMatrix);
+	if (info.isValid){
+		counter = 5;
+		Vec3 xa = info.collisionPointWorld - a->position;
+		Vec3 xb = info.collisionPointWorld - b->position;
+		Vec3 n = info.normalWorld;
+		Vec3 velocityApoint = a->velocity + cross(a->angularVelocity, xa);
+		Vec3 velocityBpoint = b->velocity + cross(b->angularVelocity, xb);
+		Vec3 vrel = velocityApoint - velocityBpoint;
 
+		Real j = dot((-(1. + c))*vrel,n) / (
+			(a->isFixed ? 0 : a->inv_mass) +
+			(b->isFixed ? 0 : b->inv_mass) +
+			dot( cross(a->inv_inertia.transformVector(cross(xa, n)), xa) +
+			  cross(b->inv_inertia.transformVector(cross(xb, n)), xb)
+			  ,n)
+			);
+
+		cout << "\nSuccess! j:" << j << " \tvrel: " << vrel << "\t n: "<<n << "\t depth: " << info.depth;
+		if(!a->isFixed) a->velocity += j*n * a->inv_mass;
+		if(!b->isFixed) b->velocity -= j*n * b->inv_mass;
+
+		if (!a->isFixed) a->angularMomentum += cross(xa, j*n);
+		if (!b->isFixed) b->angularMomentum -= cross(xb, j*n);
+	}
+}
 void RigidBodySystemSimulator::externalForcesCalculations(float timeElapsed){
 	forceRegistry.updateForces(timeElapsed);
-	for (size_t i = 0; i < rbs.size(); i++)
-	{
-		for (size_t j = 0; j < rbs.size(); j++)
+	if (true){
+		for (size_t i = 0; i < rbs.size(); i++)
 		{
-			if (i != j) checkCollision(&rbs[i], &rbs[j]);
+			for (size_t j = i+1; j < rbs.size(); j++)
+			{
+				if (i != j) checkCollision(&rbs[i], &rbs[j]);
+			}
 		}
 	}
+	else counter--;
 }
 
 void RigidBodySystemSimulator::simulateTimestep(float timeStep) {
@@ -92,7 +119,6 @@ void RigidBodySystemSimulator::simulateTimestep(float timeStep) {
 	{
 		rbs[i].integrate(timeStep);
 	}
-
 }
 
 void RigidBodySystemSimulator::onClick(int x, int y){
