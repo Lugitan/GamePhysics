@@ -16,6 +16,10 @@ RigidBodySystemSimulator::RigidBodySystemSimulator()
 void RigidBodySystemSimulator::setTestObjects(){
 	rbs.clear();
 	forceRegistry.clear();
+	rbs.push_back(RigidBody(Vec3(0.25, 0, 0), Vec3(0.1, 0.1, 0.1), 3, damp, damp));
+	rbs.push_back(RigidBody(Vec3(-0.25, 0, 0), Vec3(0.1, 0.1, 0.1), 3, damp, damp));
+	rbs[0].addForce(Vec3(-30, 0, 0));
+	rbs[1].addForce(Vec3(30, 0, 0));
 }
 
 // Functions
@@ -67,8 +71,19 @@ void RigidBodySystemSimulator::notifyCaseChanged(int testCase) {
 	}
 }
 
+void checkCollision(RigidBody* o1, RigidBody* o2){
+	checkCollisionSAT(o1->transformMatrix, o2->transformMatrix);
+}
+
 void RigidBodySystemSimulator::externalForcesCalculations(float timeElapsed){
 	forceRegistry.updateForces(timeElapsed);
+	for (size_t i = 0; i < rbs.size(); i++)
+	{
+		for (size_t j = 0; j < rbs.size(); j++)
+		{
+			if (i != j) checkCollision(&rbs[i], &rbs[j]);
+		}
+	}
 }
 
 void RigidBodySystemSimulator::simulateTimestep(float timeStep) {

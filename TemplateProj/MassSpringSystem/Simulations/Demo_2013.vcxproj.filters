@@ -31,16 +31,25 @@
     <ClInclude Include="MassSpringSystemSimulator.h" />
     <ClInclude Include="Simulator.h" />
     <ClInclude Include="TemplateSimulator.h" />
-    <ClInclude Include="util\matrixbase.h" />
-    <ClInclude Include="util\quaternion.h" />
-    <ClInclude Include="util\timer.h" />
-    <ClInclude Include="util\vectorbase.h" />
     <ClInclude Include="Spring.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Integrator.h" />
     <ClInclude Include="RigidBody.h" />
     <ClInclude Include="RigidBodySystemSimulator.h" />
     <ClInclude Include="ForceGenerator.h" />
+    <ClInclude Include="util\quaternion.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\vectorbase.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\matrixbase.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="util\timer.h">
+      <Filter>util</Filter>
+    </ClInclude>
+    <ClInclude Include="collisionDetect.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="effect.fx" />

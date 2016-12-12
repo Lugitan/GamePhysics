@@ -45,13 +45,7 @@ RigidBody::~RigidBody(){
 }
 
 void RigidBody::draw(DrawingUtilitiesClass * DUC){
-	Mat4 out;
-	out.initScaling(size.x, size.y, size.z);
-	out *= orientation.getRotMat();
-	out.value[3][0] = position.x;
-	out.value[3][1] = position.y;
-	out.value[3][2] = position.z;
-	DUC->drawRigidBody(out);
+	DUC->drawRigidBody(transformMatrix);
 }
 
 void calculateTransformMatrix(Mat4 &transformMatrix, const Vec3 &pos, const Quat &otn){	
@@ -88,10 +82,14 @@ void RigidBody::integrate(double timeStep){
 	force = Vec3();
 	torque = Vec3();
 
-	
-	// y part of angularVelocity behaves weirdly
-	cout << angularMomentum << "\t" << angularVelocity << "\t" << orientation << "\n";
 
+
+	//Calculate transformMatrix... needs to be done for draw anyways
+	transformMatrix.initScaling(size.x, size.y, size.z);
+	transformMatrix *= orientation.getRotMat();
+	transformMatrix.value[3][0] = position.x;
+	transformMatrix.value[3][1] = position.y;
+	transformMatrix.value[3][2] = position.z;
 }
 
 void RigidBody::addForce(Vec3 _force){

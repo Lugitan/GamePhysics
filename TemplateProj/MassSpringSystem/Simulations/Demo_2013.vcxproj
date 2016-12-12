@@ -236,6 +236,7 @@
   <ItemGroup>
     <ClInclude Include="DrawingUtilitiesClass.h" />
     <ClInclude Include="ForceGenerator.h" />
+    <ClInclude Include="collisionDetect.h" />
     <ClInclude Include="Integrator.h" />
     <ClInclude Include="MassSpringSystemSimulator.h" />
     <ClInclude Include="Point.h" />

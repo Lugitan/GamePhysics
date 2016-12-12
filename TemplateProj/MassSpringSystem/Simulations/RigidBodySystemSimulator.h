@@ -3,6 +3,7 @@
 #include "Simulator.h"
 #include "RigidBody.h"
 #include "ForceGenerator.h"
+#include "collisionDetect.h"
 
 #define TESTCASEUSEDTORUNTEST 2
 // Do Not Change
