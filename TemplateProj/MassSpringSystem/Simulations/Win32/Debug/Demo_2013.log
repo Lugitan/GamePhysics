@@ -1,0 +1,46 @@
+﻿Build started 12/12/2016 23:51:30.
+     1>Project "C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\Simulations\Demo_2013.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\DirectXTK/Inc /IC:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\DXUT11/Core /IC:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\DXUT11/Optional /IC:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\Effects11/inc /IC:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\AntTweakBar/include /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D NOMINMAX /D _CONSOLE /D _DEBUG /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Win32\Debug\\" /Fd"Win32\Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt RigidBodySystemSimulator.cpp
+         RigidBodySystemSimulator.cpp
+     1>c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\util\vectorbase.h(11): warning C4005: 'NOMINMAX' : macro redefinition
+                 command-line arguments :  see previous definition of 'NOMINMAX'
+     1>c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\integrator.h(18): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\collisiondetect.h(29): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\collisiondetect.h(29): warning C4244: '+=' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\collisiondetect.h(32): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\collisiondetect.h(126): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\collisiondetect.h(128): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\collisiondetect.h(145): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\collisiondetect.h(231): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\collisiondetect.h(260): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\collisiondetect.h(283): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\collisiondetect.h(308): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\util\vectorbase.h(204): warning C4244: 'argument' : conversion from 'const GamePhysics::Real' to 'float', possible loss of data
+                 c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\util\vectorbase.h(203) : while compiling class template member function 'DirectX::XMVECTOR GamePhysics::ntlVector3Dim<GamePhysics::Real>::toDirectXVector(void) const'
+                 c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\drawingutilitiesclass.h(285) : see reference to function template instantiation 'DirectX::XMVECTOR GamePhysics::ntlVector3Dim<GamePhysics::Real>::toDirectXVector(void) const' being compiled
+                 c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\util\vectorbase.h(859) : see reference to class template instantiation 'GamePhysics::ntlVector3Dim<GamePhysics::Real>' being compiled
+     1>c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\util\quaternion.h(67): warning C4244: 'argument' : conversion from 'const GamePhysics::Real' to 'float', possible loss of data
+                 c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\util\quaternion.h(66) : while compiling class template member function 'GamePhysics::ntlMatrix4x4<double> GamePhysics::Quaternion<GamePhysics::Real>::getRotMat(void) const'
+                 c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\collisiondetect.h(429) : see reference to function template instantiation 'GamePhysics::ntlMatrix4x4<double> GamePhysics::Quaternion<GamePhysics::Real>::getRotMat(void) const' being compiled
+                 c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\rigidbody.h(14) : see reference to class template instantiation 'GamePhysics::Quaternion<GamePhysics::Real>' being compiled
+     1>c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\util\matrixbase.h(777): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+                 c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\util\matrixbase.h(773) : while compiling class template member function 'DirectX::XMMATRIX GamePhysics::ntlMatrix4x4<double>::toDirectXMatrix(void)'
+                 c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\drawingutilitiesclass.h(380) : see reference to function template instantiation 'DirectX::XMMATRIX GamePhysics::ntlMatrix4x4<double>::toDirectXMatrix(void)' being compiled
+                 c:\users\gilles\documents\github\gamephysics\templateproj\massspringsystem\simulations\drawingutilitiesclass.h(379) : see reference to class template instantiation 'GamePhysics::ntlMatrix4x4<double>' being compiled
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\Win32\Debug\Simulations.lib" /NOLOGO Win32\Debug\MassSpringSystemSimulator.obj
+         Win32\Debug\Point.obj
+         Win32\Debug\ForceGenerator.obj
+         Win32\Debug\RigidBody.obj
+         Win32\Debug\RigidBodySystemSimulator.obj
+         Win32\Debug\Spring.obj
+         Win32\Debug\TemplateSimulator.obj
+         Win32\Debug\FFmpeg.obj
+         Win32\Debug\util.obj
+         Demo_2013.vcxproj -> C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\Win32\Debug\Simulations.lib
+     1>Done Building Project "C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\Simulations\Demo_2013.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.70

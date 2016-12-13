@@ -1,0 +1,101 @@
+﻿Build started 12/12/2016 23:21:44.
+     1>Project "C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\AntTweakBar\src\AntTweakBar_2013.vcxproj" on node 5 (Rebuild target(s)).
+     1>PreBuildEvent:
+         fxc /Od /Zi /T vs_4_0_level_9_1 /E LineRectVS /Fh debug32\TwDirect3D11_LineRectVS.h TwDirect3D11.hlsl
+         fxc /Od /Zi /T vs_4_0_level_9_1 /E LineRectCstColorVS /Fh debug32\TwDirect3D11_LineRectCstColorVS.h TwDirect3D11.hlsl
+         fxc /Od /Zi /T ps_4_0_level_9_1 /E LineRectPS /Fh debug32\TwDirect3D11_LineRectPS.h TwDirect3D11.hlsl
+         fxc /Od /Zi /T vs_4_0_level_9_1 /E TextVS /Fh debug32\TwDirect3D11_TextVS.h TwDirect3D11.hlsl
+         fxc /Od /Zi /T vs_4_0_level_9_1 /E TextCstColorVS /Fh debug32\TwDirect3D11_TextCstColorVS.h TwDirect3D11.hlsl
+         fxc /Od /Zi /T ps_4_0_level_9_1 /E TextPS /Fh debug32\TwDirect3D11_TextPS.h TwDirect3D11.hlsl
+         
+         :VCEnd
+         Microsoft (R) Direct3D Shader Compiler 6.3.9600.16384
+         Copyright (C) 2013 Microsoft. All rights reserved.
+         
+         compilation header save succeeded; see C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\AntTweakBar\src\debug32\TwDirect3D11_LineRectVS.h
+         Microsoft (R) Direct3D Shader Compiler 6.3.9600.16384
+         Copyright (C) 2013 Microsoft. All rights reserved.
+         
+         compilation header save succeeded; see C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\AntTweakBar\src\debug32\TwDirect3D11_LineRectCstColorVS.h
+         Microsoft (R) Direct3D Shader Compiler 6.3.9600.16384
+         Copyright (C) 2013 Microsoft. All rights reserved.
+         
+         compilation header save succeeded; see C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\AntTweakBar\src\debug32\TwDirect3D11_LineRectPS.h
+         Microsoft (R) Direct3D Shader Compiler 6.3.9600.16384
+         Copyright (C) 2013 Microsoft. All rights reserved.
+         
+         compilation header save succeeded; see C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\AntTweakBar\src\debug32\TwDirect3D11_TextVS.h
+         Microsoft (R) Direct3D Shader Compiler 6.3.9600.16384
+         Copyright (C) 2013 Microsoft. All rights reserved.
+         
+         compilation header save succeeded; see C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\AntTweakBar\src\debug32\TwDirect3D11_TextCstColorVS.h
+         Microsoft (R) Direct3D Shader Compiler 6.3.9600.16384
+         Copyright (C) 2013 Microsoft. All rights reserved.
+         
+         compilation header save succeeded; see C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\AntTweakBar\src\debug32\TwDirect3D11_TextPS.h
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../include /ZI /nologo /W4 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D TW_EXPORTS /D _VC80_UPGRADE=0x0700 /D _WINDLL /D _MBCS /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"TwPrecomp.h" /Fp"debug32\AntTweakBar.pch" /Fo"debug32\\" /Fd"debug32\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt TwPrecomp.cpp
+         TwPrecomp.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../include /ZI /nologo /W4 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D TW_EXPORTS /D _VC80_UPGRADE=0x0700 /D _WINDLL /D _MBCS /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"TwPrecomp.h" /Fp"debug32\AntTweakBar.pch" /Fo"debug32\\" /Fd"debug32\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt LoadOGL.cpp LoadOGLCore.cpp TwBar.cpp TwColors.cpp TwDirect3D10.cpp TwDirect3D11.cpp TwDirect3D9.cpp TwFonts.cpp TwMgr.cpp TwOpenGL.cpp
+         LoadOGL.cpp
+         LoadOGLCore.cpp
+         TwBar.cpp
+         TwColors.cpp
+         TwDirect3D10.cpp
+         TwDirect3D11.cpp
+         TwDirect3D9.cpp
+         TwFonts.cpp
+         TwMgr.cpp
+         TwOpenGL.cpp
+         Generating Code...
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../include /ZI /nologo /W4 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D TW_EXPORTS /D _VC80_UPGRADE=0x0700 /D _WINDLL /D _MBCS /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"debug32\\" /Fd"debug32\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt TwEventGLFW.c TwEventGLUT.c TwEventSDL.c TwEventSDL12.c TwEventSDL13.c TwEventWin.c
+         TwEventGLFW.c
+         TwEventGLUT.c
+         TwEventSDL.c
+         TwEventSDL12.c
+         TwEventSDL13.c
+         TwEventWin.c
+         Generating Code...
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I../include /ZI /nologo /W4 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D TW_EXPORTS /D _VC80_UPGRADE=0x0700 /D _WINDLL /D _MBCS /Gm- /EHsc /RTC1 /MTd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"debug32\\" /Fd"debug32\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt TwEventSFML.cpp TwOpenGLCore.cpp
+         TwEventSFML.cpp
+         TwOpenGLCore.cpp
+         Generating Code...
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /D _DEBUG /D _VC80_UPGRADE=0x0700 /l"0x0409" /Ires /nologo /fo"debug32\AntTweakBar.res" AntTweakBar.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"../lib/debug\AntTweakBar.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"../lib/debug\AntTweakBar.pdb" /TLBID:1 /DYNAMICBASE:NO /IMPLIB:"../lib/debug\AntTweakBar.lib" /MACHINE:X86 /SAFESEH /DLL debug32\AntTweakBar.res
+         debug32\LoadOGL.obj
+         debug32\LoadOGLCore.obj
+         debug32\TwBar.obj
+         debug32\TwColors.obj
+         debug32\TwDirect3D10.obj
+         debug32\TwDirect3D11.obj
+         debug32\TwDirect3D9.obj
+         debug32\TwEventGLFW.obj
+         debug32\TwEventGLUT.obj
+         debug32\TwEventSDL.obj
+         debug32\TwEventSDL12.obj
+         debug32\TwEventSDL13.obj
+         debug32\TwEventSFML.obj
+         debug32\TwEventWin.obj
+         debug32\TwFonts.obj
+         debug32\TwMgr.obj
+         debug32\TwOpenGL.obj
+         debug32\TwOpenGLCore.obj
+         debug32\TwPrecomp.obj
+         LINK : ../lib/debug\AntTweakBar.dll not found or not built by the last incremental link; performing full link
+     1>LoadOGL.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+            Creating library ../lib/debug\AntTweakBar.lib and object ../lib/debug\AntTweakBar.exp
+         AntTweakBar_2013.vcxproj -> C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\AntTweakBar\src\../lib/debug\AntTweakBar.dll
+       PostBuildEvent:
+         mkdir "C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\Win32/Debug"
+         xcopy /y /f "C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\AntTweakBar\src\../lib/debug\AntTweakBar.dll" "C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\Win32/Debug"
+         :VCEnd
+         A subdirectory or file C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\Win32/Debug already exists.
+         C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\AntTweakBar\lib\debug\AntTweakBar.dll -> C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\Win32\Debug\AntTweakBar.dll
+         1 File(s) copied
+     1>Done Building Project "C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\AntTweakBar\src\AntTweakBar_2013.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:06.47

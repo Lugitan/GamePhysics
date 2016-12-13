@@ -1,0 +1,16 @@
+﻿Build started 12/12/2016 23:51:32.
+     1>Project "C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\SimulationsRunner\SimulationsRunner_2013.vcxproj" on node 3 (Build target(s)).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\Win32\Debug\SimulationsRunner_2013.exe" /INCREMENTAL /NOLOGO D3DCompiler.lib Mf.lib mfuuid.lib Mfplat.lib Mfreadwrite.lib comctl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\Win32\Debug\SimulationsRunner_2013.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\Win32\Debug\SimulationsRunner_2013.lib" /MACHINE:X86 Debug\main.obj
+         C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\AntTweakBar\lib\debug\AntTweakBar.lib
+         C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\DirectXTK\Bin\Desktop_2013\Win32\Debug\DirectXTK.lib
+         C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\DXUT11\Core\Bin\DirectXTK_2013\Win32\Debug\DXUT.lib
+         C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\DXUT11\Optional\Bin\DirectXTK_2013\Win32\Debug\DXUTOpt.lib
+         C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\Effects11\Bin\Desktop_2013\Win32\Debug\Effects11.lib
+         C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\Win32\Debug\Simulations.lib
+         SimulationsRunner_2013.vcxproj -> C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\Win32\Debug\SimulationsRunner_2013.exe
+     1>Done Building Project "C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\SimulationsRunner\SimulationsRunner_2013.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.80

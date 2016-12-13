@@ -1,0 +1,5 @@
+C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\DirectXTK\MakeSpriteFont\bin\x86\Debug\MakeSpriteFont.exe
+C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\DirectXTK\MakeSpriteFont\bin\x86\Debug\MakeSpriteFont.pdb
+C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\DirectXTK\MakeSpriteFont\obj\x86\Debug\MakeSpriteFont.csprojResolveAssemblyReference.cache
+C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\DirectXTK\MakeSpriteFont\obj\x86\Debug\MakeSpriteFont.exe
+C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\DirectXTK\MakeSpriteFont\obj\x86\Debug\MakeSpriteFont.pdb

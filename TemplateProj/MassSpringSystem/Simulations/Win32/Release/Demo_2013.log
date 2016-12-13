@@ -1,0 +1,46 @@
+﻿Der Buildvorgang wurde am 18.11.2016 18:08:32 gestartet.
+     1>Projekt "Q:\Users\Benedikt\Uni\GamePhysics\TemplateProj\MassSpringSystem\Simulations\Demo_2013.vcxproj" auf Knoten "2", Build Ziel(e).
+     1>ClCompile:
+         Q:\Programme (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IQ:\Users\Benedikt\Uni\GamePhysics\TemplateProj\MassSpringSystem\DirectXTK/Inc /IQ:\Users\Benedikt\Uni\GamePhysics\TemplateProj\MassSpringSystem\DXUT11/Core /IQ:\Users\Benedikt\Uni\GamePhysics\TemplateProj\MassSpringSystem\DXUT11/Optional /IQ:\Users\Benedikt\Uni\GamePhysics\TemplateProj\MassSpringSystem\Effects11/inc /IQ:\Users\Benedikt\Uni\GamePhysics\TemplateProj\MassSpringSystem\AntTweakBar/include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NOMINMAX /D _CONSOLE /D NDEBUG /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Win32\Release\\" /Fd"Win32\Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt MassSpringSystemSimulator.cpp Spring.cpp
+         MassSpringSystemSimulator.cpp
+     1>MassSpringSystemSimulator.cpp(1): warning C4067: Unerwartete Token nach Präprozessordirektive - Zeilenvorschub erwartet.
+     1>q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\util/vectorbase.h(11): warning C4005: 'NOMINMAX': Makro-Neudefinition
+                 Befehlszeilenargumente: siehe vorherige Definition von "NOMINMAX"
+     1>q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\MassSpringSystemSimulator.h(4): warning C4067: Unerwartete Token nach Präprozessordirektive - Zeilenvorschub erwartet.
+     1>q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\MassSpringSystemSimulator.h(5): warning C4067: Unerwartete Token nach Präprozessordirektive - Zeilenvorschub erwartet.
+     1>q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\Spring.h(2): warning C4067: Unerwartete Token nach Präprozessordirektive - Zeilenvorschub erwartet.
+     1>MassSpringSystemSimulator.cpp(38): warning C4305: 'Argument': Verkürzung von 'double' in 'float'
+     1>q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\util/vectorbase.h(204): warning C4244: 'Argument': Konvertierung von 'const GamePhysics::Real' in 'float', möglicher Datenverlust
+                 q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\util/vectorbase.h(203): Bei der Kompilierung der  Klassen-template der DirectX::XMVECTOR GamePhysics::ntlVector3Dim<GamePhysics::Real>::toDirectXVector(void) const-Memberfunktion
+                 q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\DrawingUtilitiesClass.h(285): Siehe Verweis auf die Instanziierung der gerade kompilierten Funktions-template "DirectX::XMVECTOR GamePhysics::ntlVector3Dim<GamePhysics::Real>::toDirectXVector(void) const".
+                 q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\util/vectorbase.h(859): Siehe Verweis auf die Instanziierung der gerade kompilierten Klassen-template "GamePhysics::ntlVector3Dim<GamePhysics::Real>".
+     1>q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\util\matrixbase.h(777): warning C4244: 'Argument': Konvertierung von 'double' in 'float', möglicher Datenverlust
+                 q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\util\matrixbase.h(773): Bei der Kompilierung der  Klassen-template der DirectX::XMMATRIX GamePhysics::ntlMatrix4x4<double>::toDirectXMatrix(void)-Memberfunktion
+                 q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\DrawingUtilitiesClass.h(380): Siehe Verweis auf die Instanziierung der gerade kompilierten Funktions-template "DirectX::XMMATRIX GamePhysics::ntlMatrix4x4<double>::toDirectXMatrix(void)".
+                 q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\DrawingUtilitiesClass.h(379): Siehe Verweis auf die Instanziierung der gerade kompilierten Klassen-template "GamePhysics::ntlMatrix4x4<double>".
+         Spring.cpp
+     1>q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\Spring.h(2): warning C4067: Unerwartete Token nach Präprozessordirektive - Zeilenvorschub erwartet.
+     1>q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\util/vectorbase.h(11): warning C4005: 'NOMINMAX': Makro-Neudefinition
+                 Befehlszeilenargumente: siehe vorherige Definition von "NOMINMAX"
+     1>Spring.cpp(19): warning C4244: 'Argument': Konvertierung von 'GamePhysics::Real' in 'float', möglicher Datenverlust
+     1>q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\util/vectorbase.h(204): warning C4244: 'Argument': Konvertierung von 'const GamePhysics::Real' in 'float', möglicher Datenverlust
+                 q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\util/vectorbase.h(203): Bei der Kompilierung der  Klassen-template der DirectX::XMVECTOR GamePhysics::ntlVector3Dim<GamePhysics::Real>::toDirectXVector(void) const-Memberfunktion
+                 q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\DrawingUtilitiesClass.h(285): Siehe Verweis auf die Instanziierung der gerade kompilierten Funktions-template "DirectX::XMVECTOR GamePhysics::ntlVector3Dim<GamePhysics::Real>::toDirectXVector(void) const".
+                 q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\util/vectorbase.h(859): Siehe Verweis auf die Instanziierung der gerade kompilierten Klassen-template "GamePhysics::ntlVector3Dim<GamePhysics::Real>".
+     1>q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\util\matrixbase.h(777): warning C4244: 'Argument': Konvertierung von 'double' in 'float', möglicher Datenverlust
+                 q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\util\matrixbase.h(773): Bei der Kompilierung der  Klassen-template der DirectX::XMMATRIX GamePhysics::ntlMatrix4x4<double>::toDirectXMatrix(void)-Memberfunktion
+                 q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\DrawingUtilitiesClass.h(380): Siehe Verweis auf die Instanziierung der gerade kompilierten Funktions-template "DirectX::XMMATRIX GamePhysics::ntlMatrix4x4<double>::toDirectXMatrix(void)".
+                 q:\users\benedikt\uni\gamephysics\templateproj\massspringsystem\simulations\DrawingUtilitiesClass.h(379): Siehe Verweis auf die Instanziierung der gerade kompilierten Klassen-template "GamePhysics::ntlMatrix4x4<double>".
+       Lib:
+         Q:\Programme (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"Q:\Users\Benedikt\Uni\GamePhysics\TemplateProj\MassSpringSystem\Win32\Release\Simulations.lib" /NOLOGO /LTCG Win32\Release\MassSpringSystemSimulator.obj
+         Win32\Release\Point.obj
+         Win32\Release\Spring.obj
+         Win32\Release\TemplateSimulator.obj
+         Win32\Release\FFmpeg.obj
+         Win32\Release\util.obj
+         Demo_2013.vcxproj -> Q:\Users\Benedikt\Uni\GamePhysics\TemplateProj\MassSpringSystem\Win32\Release\Simulations.lib
+     1>Die Erstellung des Projekts "Q:\Users\Benedikt\Uni\GamePhysics\TemplateProj\MassSpringSystem\Simulations\Demo_2013.vcxproj" ist abgeschlossen, Build Ziel(e).
+
+Build erfolgreich.
+
+Verstrichene Zeit 00:00:03.46

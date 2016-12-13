@@ -39,7 +39,7 @@ public:
 	void setVelocityOf(int i, Vec3 velocity);
 
 
-	void setTestObjects();
+	void setTestObjects(int showcase);
 
 	vector<RigidBody> rbs;
 private:

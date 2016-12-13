@@ -11,22 +11,40 @@ RigidBodySystemSimulator::RigidBodySystemSimulator()
 {
 	m_iTestCase = 0;
 	
-	setTestObjects();
+	setTestObjects(0);
 }
 
-void RigidBodySystemSimulator::setTestObjects(){
-	rbs.clear();
-	forceRegistry.clear();
-	rbs.push_back(RigidBody(Vec3(0.2, 0, 0), Vec3(0.1, 0.1, 0.1), 1, damp, damp));
-	rbs.push_back(RigidBody(Vec3(-0.2, 0, 0), Vec3(0.1, 0.3, 0.1), 1, damp, damp));
-	rbs[0].isFixed = true;
-	rbs[0].addForce(Vec3(-40, 0, 0));
-	rbs[1].addForceAtLocalPoint(Vec3(40, 0, 0), Vec3(0,0.01,0.01));
+void RigidBodySystemSimulator::setTestObjects(int showcase){
+	if (showcase == 0) {
+		rbs.clear();
+		forceRegistry.clear();
+		rbs.push_back(RigidBody(Vec3(0, 0, 0), Vec3(1, 0.6, 0.5), 2, damp, damp));
+		rbs[0].addForceAtLocalPoint(Vec3(1, 1, 0), Vec3(0.3, 0.5, 0.25));
+	}
+	else if (showcase == 1) {
+		rbs.clear();
+		forceRegistry.clear();
+		rbs.push_back(RigidBody(Vec3(0.2, 0, 0), Vec3(0.1, 0.1, 0.1), 1, damp, damp));
+		rbs.push_back(RigidBody(Vec3(-0.2, 0, 0), Vec3(0.1, 0.3, 0.1), 1, damp, damp));
+		rbs[0].isFixed = true;
+		rbs[0].addForce(Vec3(-40, 0, 0));
+		rbs[1].addForceAtLocalPoint(Vec3(40, 0, 0), Vec3(0,0.01,0.01));
+	}
+	else if (showcase == 2) {
+		rbs.clear();
+		forceRegistry.clear();
+		rbs.push_back(RigidBody(Vec3(0.2, 0, 0), Vec3(0.1, 0.1, 0.1), 1, damp, damp));
+		rbs.push_back(RigidBody(Vec3(-0.2, 0, 0), Vec3(0.1, 0.3, 0.1), 1, damp, damp));
+		rbs.push_back(RigidBody(Vec3(0, 0.2, 0), Vec3(0.1, 0.1, 0.1), 1, damp, damp));
+		rbs.push_back(RigidBody(Vec3(0, -0.2, 0), Vec3(0.1, 0.3, 0.1), 1, damp, damp));
+		rbs[0].addForce(Vec3(-40, 0, 0));
+		rbs[1].addForceAtLocalPoint(Vec3(40, 0, 0), Vec3(0, 0.01, 0.01));
+	}
 }
 
 // Functions
 const char * RigidBodySystemSimulator::getTestCasesStr(){
-	return "Euler, Leapfrog, Midpoint";
+	return "Test Demo 1, Test Demo 2, Test Demo 3";
 }
 
 void RigidBodySystemSimulator::initUI(DrawingUtilitiesClass * DUC) {
@@ -53,19 +71,13 @@ void RigidBodySystemSimulator::notifyCaseChanged(int testCase) {
 	switch (m_iTestCase)
 	{
 	case 0:
-		//Euler
-		Integrator::setIntegrator(LEAPFROG);
-		setTestObjects();
+		setTestObjects(0);
 		break;
 	case 1:
-		//Midpoint
-		Integrator::setIntegrator(LEAPFROG);
-		setTestObjects();
+		setTestObjects(1);
 		break;
 	case 2:
-		//LeapFrog
-		Integrator::setIntegrator(LEAPFROG);
-		setTestObjects();
+		setTestObjects(2);
 		break;
 	default:
 		cout << "Empty Test!\n";
@@ -107,6 +119,29 @@ void checkCollision(RigidBody* a, RigidBody* b){
 	}
 }
 void RigidBodySystemSimulator::externalForcesCalculations(float timeElapsed){
+
+	if (m_trackmouse.x != 0 || m_trackmouse.y != 0)
+	{
+		// Calcuate camera directions in world space
+		Mat4 m = Mat4(DUC->g_camera.GetViewMatrix());
+		m = m.inverse();
+		Vec3 camRightWorld = Vec3(g_XMIdentityR0);
+		camRightWorld = m.transformVectorNormal(camRightWorld);
+		Vec3 camUpWorld = Vec3(g_XMIdentityR1);
+		camUpWorld = m.transformVectorNormal(camUpWorld);
+
+		// Add accumulated mouse deltas to movable object pos
+		float speedScale = 0.001f;
+		for (size_t i = 0; i < rbs.size(); i++)
+		{
+			rbs[i].position += speedScale * (float)m_trackmouse.x * camRightWorld;
+			rbs[i].position += -speedScale * (float)m_trackmouse.y * camUpWorld;
+		}
+
+		// Reset accumulated mouse deltas
+		m_trackmouse.x = m_trackmouse.y = 0;
+	}
+
 	forceRegistry.updateForces(timeElapsed);
 	if (true){
 		for (size_t i = 0; i < rbs.size(); i++)

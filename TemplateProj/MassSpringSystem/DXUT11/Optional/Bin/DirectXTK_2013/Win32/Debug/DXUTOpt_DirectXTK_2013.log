@@ -1,0 +1,27 @@
+﻿Build started 12/12/2016 23:21:45.
+     1>Project "C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\DXUT11\Optional\DXUTOpt_DirectXTK_2013.vcxproj" on node 6 (Rebuild target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\DirectXTK\Inc /I..\Core\ /ZI /nologo /W4 /WX- /Od /Oi /Oy- /D WIN32 /D _DEBUG /D DEBUG /D PROFILE /D _WINDOWS /D _LIB /D USE_DIRECTXTK /D USE_DIRECT3D11_2 /D _WIN32_WINNT=0x0600 /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /arch:SSE2 /fp:fast /Zc:wchar_t /Zc:forScope /openmp- /Yc"DXUT.h" /Fp"Bin\DirectXTK_2013\Win32\Debug\DXUTOpt.pch" /Fo"Bin\DirectXTK_2013\Win32\Debug\\" /Fd"Bin\DirectXTK_2013\Win32\Debug\DXUTOpt.pdb" /Gd /TP /analyze- /errorReport:prompt  DXUTres.cpp
+         DXUTres.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\..\DirectXTK\Inc /I..\Core\ /ZI /nologo /W4 /WX- /Od /Oi /Oy- /D WIN32 /D _DEBUG /D DEBUG /D PROFILE /D _WINDOWS /D _LIB /D USE_DIRECTXTK /D USE_DIRECT3D11_2 /D _WIN32_WINNT=0x0600 /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /arch:SSE2 /fp:fast /Zc:wchar_t /Zc:forScope /openmp- /Yu"DXUT.h" /Fp"Bin\DirectXTK_2013\Win32\Debug\DXUTOpt.pch" /Fo"Bin\DirectXTK_2013\Win32\Debug\\" /Fd"Bin\DirectXTK_2013\Win32\Debug\DXUTOpt.pdb" /Gd /TP /analyze- /errorReport:prompt  DXUTcamera.cpp DXUTgui.cpp DXUTguiIME.cpp DXUTsettingsdlg.cpp ImeUi.cpp SDKmisc.cpp
+         DXUTcamera.cpp
+         DXUTgui.cpp
+         DXUTguiIME.cpp
+         DXUTsettingsdlg.cpp
+         ImeUi.cpp
+         SDKmisc.cpp
+         Generating Code...
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"Bin\DirectXTK_2013\Win32\Debug\DXUTOpt.lib" /NOLOGO Bin\DirectXTK_2013\Win32\Debug\DXUTcamera.obj
+         Bin\DirectXTK_2013\Win32\Debug\DXUTgui.obj
+         Bin\DirectXTK_2013\Win32\Debug\DXUTguiIME.obj
+         Bin\DirectXTK_2013\Win32\Debug\DXUTres.obj
+         Bin\DirectXTK_2013\Win32\Debug\DXUTsettingsdlg.obj
+         Bin\DirectXTK_2013\Win32\Debug\ImeUi.obj
+         Bin\DirectXTK_2013\Win32\Debug\SDKmisc.obj
+         DXUTOpt_DirectXTK_2013.vcxproj -> C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\DXUT11\Optional\Bin\DirectXTK_2013\Win32\Debug\DXUTOpt.lib
+     1>Done Building Project "C:\Users\Gilles\Documents\GitHub\GamePhysics\TemplateProj\MassSpringSystem\DXUT11\Optional\DXUTOpt_DirectXTK_2013.vcxproj" (Rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.25
